@@ -1,4 +1,7 @@
-# Page title
+---
+title: konflux land page
+layout: base.njk
+---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 aliqua. Aliquet enim tortor at auctor urna. Id porta nibh venenatis cras sed. Scelerisque fermentum dui faucibus in

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "env NODE_ENV=production npx eleventy --pathprefix '11ty-example'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
   },
   "keywords": [],
   "author": "",
