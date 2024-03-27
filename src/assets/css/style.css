@@ -28,31 +28,12 @@ nav {
   top: 11px;
 }
 
-.logo {
-  position: absolute;
-  width: 153.34px;
-  height: 39px;
-  left: 27px;
-  top: 11px;
-}
-
-.parent {
-  position: absolute;
-  width: 1512px;
-  height: 923px;
-  left: 0px;
-  top: 59px;
-
-  background: linear-gradient(90.11deg, #F5F5F5 43.74%, rgba(245, 245, 245, 0.636649) 55.75%, rgba(245, 245, 245, 0) 87.71%);
-
-}
-
 .rivers {
   position: absolute;
   width: 1182px;
   height: 919px;
   left: 330px;
-  top: 63px;
+  top: 60px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
@@ -61,7 +42,7 @@ nav {
   width: 1512px;
   height: 923px;
   left: 0px;
-  top: 59px;
+  top: 60px;
 
   background: linear-gradient(90.11deg, #F5F5F5 43.74%, rgba(245, 245, 245, 0.636649) 55.75%, rgba(245, 245, 245, 0) 87.71%);
 }
@@ -132,3 +113,4 @@ nav {
   left: 1095px;
   top: 716px;
 }
+
