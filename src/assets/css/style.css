@@ -1,0 +1,134 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+nav {
+  position: absolute;
+  width: 1512px;
+  height: 63px;
+  left: 0px;
+  top: 0px;
+
+  background: #333333;
+}
+
+.logo {
+  position: absolute;
+  width: 153.34px;
+  height: 39px;
+  left: 27px;
+  top: 11px;
+}
+
+.logo {
+  position: absolute;
+  width: 153.34px;
+  height: 39px;
+  left: 27px;
+  top: 11px;
+}
+
+.parent {
+  position: absolute;
+  width: 1512px;
+  height: 923px;
+  left: 0px;
+  top: 59px;
+
+  background: linear-gradient(90.11deg, #F5F5F5 43.74%, rgba(245, 245, 245, 0.636649) 55.75%, rgba(245, 245, 245, 0) 87.71%);
+
+}
+
+.rivers {
+  position: absolute;
+  width: 1182px;
+  height: 919px;
+  left: 330px;
+  top: 63px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.bg {
+  position: absolute;
+  width: 1512px;
+  height: 923px;
+  left: 0px;
+  top: 59px;
+
+  background: linear-gradient(90.11deg, #F5F5F5 43.74%, rgba(245, 245, 245, 0.636649) 55.75%, rgba(245, 245, 245, 0) 87.71%);
+}
+
+.title {
+  position: absolute;
+  width: 670px;
+  height: 96px;
+  left: 77px;
+  top: 198px;
+
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 96px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.subtitle {
+  position: absolute;
+  width: 651px;
+  height: 222px;
+  left: 83px;
+  top: 306px;
+
+  font-family: Cambay, "Lucida Console", "Courier New", monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  color: #000000;
+}
+
+.white-box {
+  position: absolute;
+  width: 1512px;
+  height: 345px;
+  left: 0px;
+  top: 637px;
+  background: #FFFFFF;
+}
+
+.box {
+  position: absolute;
+  width: 199px;
+  height: 262px;
+  left: 173px;
+  top: 670px;
+}
+
+.clock {
+  position: absolute;
+  width: 204px;
+  height: 223px;
+  left: 602px;
+  top: 709px;
+}
+
+.postcard {
+  position: absolute;
+  width: 183px;
+  height: 216px;
+  left: 1095px;
+  top: 716px;
+}
