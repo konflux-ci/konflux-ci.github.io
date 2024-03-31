@@ -1,0 +1,5 @@
+weight: 3
+# name: "Print"
+icon: "fas fa-cloud-upload-alt"
+url: ""
+description: "Simplified deployment across multiple clouds."

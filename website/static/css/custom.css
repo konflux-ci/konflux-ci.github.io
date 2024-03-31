@@ -1,0 +1,34 @@
+/* your styles go here */
+.home-carousel {
+    position: relative;
+    background: url('../img/carousel/rivers.svg') center center repeat;
+    background-size: cover;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.home-carousel .dark-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #b5f2fd;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+.home-carousel h1 {
+    color: black;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+.home-carousel ul {
+    color: black;
+    font-family: Cambay, "Lucida Console", "Courier New", monospace;
+}
+
+.navbar {
+    background: #333333;
+}
