@@ -1,4 +1,39 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://konflux-ci.dev/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Konflux'
 theme = 'hugo-universal-theme'
+
+# Site language. Available translations in the theme's `/i18n` directory.
+defaultContentLanguage = "en"
+
+# number of words of summarized post content (default 70)
+summaryLength = 70
+
+# Define the number of posts per page
+paginate = 10
+
+# not pluralize title pages by default
+pluralizelisttitles = false
+
+[params]
+    disabled_logo = false
+    logo_text = "Konflux"
+
+    logo = "img/logo.svg"
+    logo_small = "img/logo.svg"
+
+    # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
+    style = "default"
+
+[params.carouselHomepage]
+    enable = true
+    auto_play = true
+    slide_speed = 2000
+    pagination_speed = 1000
+
+[params.features]
+    enable = true
+    cols = 3 # Default: 3, Available values 2,3,4,6
+    # All features are defined in their own files. You can find example items
+    # at 'exampleSite/data/features'.
+    # For more information take a look at the README.
