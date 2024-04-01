@@ -6,6 +6,9 @@
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    height: 60vh;
+
 }
 
 .home-carousel .dark-mask {
@@ -14,14 +17,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #b5f2fd;
-    opacity: 0.6;
-    filter: alpha(opacity=60);
+    background: white;
+    opacity: 0.7;
+    filter: alpha(opacity=40);
 }
 
 .home-carousel h1 {
     color: black;
     font-family: Poppins, Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 55px;
 }
 
 .home-carousel ul {
@@ -31,4 +36,18 @@
 
 .navbar {
     background: #333333;
+}
+
+.home-carousel p {
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0.10em;
+    text-align: center;
+    font-family: Cambay, "Lucida Console", "Courier New", monospace;
+  }
+
+  .col-sm-5 {
+    width: 100%;
 }
