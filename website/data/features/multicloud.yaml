@@ -1,5 +1,5 @@
-weight: 3
-# name: "Print"
+weight: 5
+name: "Multicloud Simplified"
 icon: "fas fa-cloud-upload-alt"
 url: ""
 description: "Simplified deployment across multiple clouds."
