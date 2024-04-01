@@ -1,9 +1,5 @@
 weight: 1
 title: "Welcome to Konflux"
 description: >
-  <ul class="list-style-none">
-    <li>Opinionated Kubernetes-native</li>
-    <li>security first software factory</li>
-    <li>based on Tekton</li>
-    <li>implemented using the CRD / Controller / reconciliation loop pattern</li>
-  </ul>
+  <p>Opinionated Kubernetes-native security-first software factory based on Tekton.<br>
+  Your one-stop shop for building, testing and deploying source code with secure CI/CD.</p>
