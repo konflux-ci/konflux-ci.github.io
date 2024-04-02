@@ -1,0 +1,5 @@
+weight: 4
+name: "Auto-deploy to Dev"
+icon: "fas fa-play"
+url: ""
+description: "Automatically deploy your container image to development environment."

@@ -1,0 +1,5 @@
+weight: 3
+name: "Identify Vulnerabilities"
+icon: "fas fa-bug"
+url: ""
+description: "Catch critical vulnerabilities quickly with each pull request."

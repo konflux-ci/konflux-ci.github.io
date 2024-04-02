@@ -1,5 +1,5 @@
 weight: 1
-# name: "Containerized"
+name: "Build"
 icon: "fas fa-box-open"
 url: ""
-description: "Start with source code and containerize your applications for OpenShift and Kubernetes."
+description: "Containerize your Java, Python, Node, or Go code for OpenShift and Kubernetes."
