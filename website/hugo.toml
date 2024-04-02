@@ -37,3 +37,10 @@ pluralizelisttitles = false
     # All features are defined in their own files. You can find example items
     # at 'exampleSite/data/features'.
     # For more information take a look at the README.
+
+[params.see_more]
+    enable = true
+    icon = "far fa-file-alt"
+    title = "Want to know more?"
+    link_url = "https://redhat-appstudio.github.io/docs.appstudio.io/"
+    link_text = "Konflux Documentation"
