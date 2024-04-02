@@ -35,7 +35,8 @@
 }
 
 .navbar {
-    background: #333333;
+    display: none;
+    visibility: hidden;
 }
 
 .home-carousel p {
@@ -50,4 +51,8 @@
 
   .col-sm-5 {
     width: 100%;
+}
+
+#top {
+    background: #333333;
 }

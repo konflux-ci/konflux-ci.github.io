@@ -16,7 +16,7 @@ paginate = 10
 pluralizelisttitles = false
 
 [params]
-    disabled_logo = false
+    disabled_logo = true
     logo_text = "Konflux"
 
     logo = "img/logo.svg"
@@ -41,3 +41,13 @@ pluralizelisttitles = false
     title = "Want to know more?"
     link_url = "https://redhat-appstudio.github.io/docs.appstudio.io/"
     link_text = "Konflux Documentation"
+
+[params.topbar]
+    enable = true
+    text = """<a href="/"><img src='img/logo.svg'></a>"""
+
+[[menu.topbar]]
+    weight = 1
+    name = "GitHub"
+    url = "https://github.com/konflux-ci"
+    pre = "<i class='fab fa-3x fa-github'></i>"
