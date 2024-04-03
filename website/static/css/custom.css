@@ -31,11 +31,7 @@
     font-family: Poppins, Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 55px;
-}
-
-.home-carousel ul {
-    color: black;
-    font-family: Cambay, "Lucida Console", "Courier New", monospace;
+    text-transform: none;
 }
 
 .navbar {
@@ -50,8 +46,47 @@
     letter-spacing: 0.10em;
     text-align: center;
     font-family: Cambay, "Lucida Console", "Courier New", monospace;
-  }
+}
 
-  .col-sm-5 {
+.col-sm-5 {
     width: 100%;
+    height: 50vh;
+}
+
+.doc-button {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    gap: 10px;
+    margin: 0 auto;
+    border: none;
+    margin-top: 5em;
+    width: 250px;
+    height: 60px;
+    min-height: 56px;
+    max-height: 56px;
+    left: 83px;
+    top: 150px;
+    background: #FC783D;
+    border-radius: 3px;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.box-simple {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+.box-simple h3 {
+    text-transform: none;
 }
