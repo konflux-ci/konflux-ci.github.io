@@ -6,7 +6,7 @@ description: >
        Your one-stop shop for building, testing and deploying source code with secure CI/CD.
     </p>
     <form>
-      <button type="button" class="doc-button" onclick="location.href='https://redhat-appstudio.github.io/docs.appstudio.io/'">
+      <button type="button" class="doc-button" onclick="window.open('https://redhat-appstudio.github.io/docs.appstudio.io/', '_blank')">
         Read Documentation
       </button>
     </form>
