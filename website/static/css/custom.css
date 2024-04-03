@@ -90,3 +90,7 @@
 .box-simple h3 {
     text-transform: none;
 }
+
+#footer { 
+    display: none;
+}
