@@ -1,4 +1,8 @@
 /* your styles go here */
+@import url('https://fonts.googleapis.com/css2?family=Cambay&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.cdnfonts.com/css/arial');
+
 .home-carousel {
     position: relative;
     background: url('../img/carousel/rivers.svg') center center repeat;
