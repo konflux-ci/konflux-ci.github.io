@@ -1,5 +1,5 @@
 weight: 5
-name: "Continuous"
+name: "Streamline Development"
 icon: "fas fa-clock"
 url: ""
 description: "Continuously build, test, and roll out your applications."
