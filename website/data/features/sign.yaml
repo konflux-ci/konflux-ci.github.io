@@ -1,5 +1,5 @@
 weight: 2
 name: "Securely Sign"
-icon: "fas fa-signature"
+icon: "iconoir-shield-check"
 url: ""
 description: "Apply attestations and cryptographic signatures and provenance with Tekton chains."

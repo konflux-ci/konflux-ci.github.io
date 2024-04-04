@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cambay&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.cdnfonts.com/css/arial');
+@import url("https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css");
 
 .home-carousel {
     position: relative;
@@ -98,6 +99,25 @@
 .box-simple p {
     color: #606060;
     font-family: Cambay, "Lucida Console", "Courier New", monospace;
+}
+
+.box-simple .icon {
+    color: #004884;
+    border-color: #555555;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.icon {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    color: #fff;
+    line-height: 80px;
+    border-radius: 40px;
+    border: solid 1px #fff;
+    font-size: 32px;
 }
 
 #footer {
