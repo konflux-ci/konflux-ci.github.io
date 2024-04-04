@@ -62,7 +62,8 @@
     gap: 10px;
     margin: 0 auto;
     border: none;
-    margin-top: 5em;
+    margin-top: 3em;
+    margin-bottom: 3em;
     width: 250px;
     height: 60px;
     min-height: 56px;
@@ -83,6 +84,12 @@
     flex-grow: 0;
 }
 
+.bar {
+    position: relative;
+    background: var(--primary-accent);
+    padding: 30px 0;
+}
+
 .box-simple {
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
@@ -92,6 +99,6 @@
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
-#footer { 
+#footer {
     display: none;
 }
