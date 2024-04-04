@@ -33,6 +33,7 @@
     text-align: center;
     font-size: 55px;
     text-transform: none;
+    margin-bottom: 48px;
 }
 
 .navbar {
@@ -93,6 +94,7 @@
 
 .box-simple h3 {
     text-transform: none;
+    color: #000000;
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
