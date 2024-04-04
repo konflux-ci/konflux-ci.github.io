@@ -1,5 +1,5 @@
 weight: 4
 name: "Supply Chain Safeguards"
-icon: "fas fa-ship"
+icon: "iconoir-delivery-truck"
 url: ""
 description: "Verify container images against SLSA guidelines using Enterprise Contract rules."

@@ -1,5 +1,5 @@
 weight: 1
 name: "Build"
-icon: "fas fa-box-open"
+icon: "iconoir-laptop-fix"
 url: ""
 description: "Containerize your Java, Python, Node, or Go code for OpenShift and Kubernetes."
