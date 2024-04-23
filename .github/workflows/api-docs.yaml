@@ -1,0 +1,126 @@
+# This is a basic workflow to help you get started with Actions
+
+name: api-docs
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+  workflow_call:
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  generate-docs:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout arch repo
+        uses: actions/checkout@v3
+        with:
+          repository: konflux-ci/architecture
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Application and Environment API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/application-api
+          repository: redhat-appstudio/application-api
+
+      - name: Checkout SPI
+        uses: actions/checkout@v3
+        with:
+          repository: redhat-appstudio/service-provider-integration-operator
+          path: crd-temp/service-provider
+
+      - name: Checkout GitOps
+        uses: actions/checkout@v3
+        with:
+          repository: redhat-appstudio/managed-gitops
+          path: crd-temp/managed-gitops
+
+      - name: Checkout Build Service API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/build-service
+          repository: redhat-appstudio/build-service
+
+      - name: Checkout Integration Service API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/integration-service
+          repository: redhat-appstudio/integration-service
+
+      - name: Checkout Release Service API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/release-service
+          repository: redhat-appstudio/release-service
+
+      - name: Checkout JVM Build Service API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/jvm-build-service
+          repository: redhat-appstudio/jvm-build-service
+
+      - name: Checkout Enterprise Contract API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/enterprise-contract-controller
+          repository: enterprise-contract/enterprise-contract-controller
+
+      - name: Checkout DevSandbox API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/devsandbox-api
+          repository: codeready-toolchain/api
+
+      - name: Checkout Internal Services API
+        uses: actions/checkout@v3
+        with:
+          path: crd-temp/internal-services
+          repository: redhat-appstudio/internal-services
+
+      - name: Install crd-ref-docs
+        uses: supplypike/setup-bin@v1
+        with:
+          uri: 'https://github.com/elastic/crd-ref-docs/releases/download/v0.0.8/crd-ref-docs'
+          name: 'crd-ref-docs'
+          version: '0.0.8'
+
+      - name: Generate service provider API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/service-provider.md --renderer=markdown --source-path=crd-temp/service-provider/api/v1beta1
+
+      - name: Generate application and environment API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/application-environment-api.md --renderer=markdown --source-path=crd-temp/application-api/api/v1alpha1
+
+      - name: Generate GitOps service API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/gitops.md --renderer=markdown --source-path=crd-temp/managed-gitops/backend-shared/apis/managed-gitops/v1alpha1
+
+      - name: Generate Build Service API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/build-service.md --renderer=markdown --source-path=crd-temp/build-service/api/v1alpha1/
+
+      - name: Generate Integration Service API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/integration-service.md --renderer=markdown --source-path=crd-temp/integration-service/api/v1alpha1/
+
+      - name: Generate Release Service API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/release-service.md --renderer=markdown --source-path=crd-temp/release-service/api/v1alpha1/
+
+      - name: Generate JVM Build Service API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/jvm-build-service.md --renderer=markdown --source-path=crd-temp/jvm-build-service/pkg/apis/jvmbuildservice/v1alpha1/
+
+      - name: Generate Enterprise Contract API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/enterprise-contract.md --renderer=markdown --source-path=crd-temp/enterprise-contract-controller/api/v1alpha1/
+
+      - name: Generate devsandbox API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/devsandbox.md --renderer=markdown --source-path=crd-temp/devsandbox-api/api/v1alpha1
+
+      - name: Generate Internal Services API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/internal-services.md --renderer=markdown --source-path=crd-temp/internal-services/api/v1alpha1/
+
+      - name: Upload generated docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-docs
+          path: ref/
