@@ -26,10 +26,34 @@ pluralizelisttitles = false
     style = "default"
 
 [[menu.main]]
+    name       = "Community"
+    identifier = "menu.community"
+    url        = "https://github.com/konflux-ci/community"
+    weight     = 1
+
+[[menu.main]]
     name       = "User Guide"
     identifier = "menu.userguide"
     url        = "https://redhat-appstudio.github.io/docs.appstudio.io"
     weight     = 2
+
+[[menu.main]]
+    name       = "Architecture"
+    identifier = "menu.architecture"
+    url        = "/architecture/"
+    weight     = 3
+
+[[menu.main]]
+    name       = "Decisions"
+    identifier = "menu.adrs"
+    url        = "/adr/"
+    weight     = 4
+
+[[menu.main]]
+    name       = "API"
+    identifier = "menu.api"
+    url        = "/ref/"
+    weight     = 5
 
 [params.carouselHomepage]
     enable = true
