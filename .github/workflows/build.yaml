@@ -53,13 +53,13 @@ jobs:
       - name: Checkout architecture repo
         uses: actions/checkout@v4
         with:
-          path: content
+          path: website/content
           repository: konflux-ci/architecture
       - name: Download generated API docs
         uses: actions/download-artifact@v4
         with:
           name: api-docs
-          path: content/ref/
+          path: website/content/ref/
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
