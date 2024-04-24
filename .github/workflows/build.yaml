@@ -31,10 +31,6 @@ jobs:
     uses: ./.github/workflows/api-docs.yaml
     secrets: inherit
 
-  adr-index:
-    uses: ./.github/workflows/adr-index.yaml
-    secrets: inherit
-
   # Build job
   hugo:
     runs-on: ubuntu-latest
@@ -42,7 +38,6 @@ jobs:
       HUGO_VERSION: 0.124.0
     needs:
       - api-docs
-      - adr-index
     steps:
       - name: Install Hugo CLI
         run: |
