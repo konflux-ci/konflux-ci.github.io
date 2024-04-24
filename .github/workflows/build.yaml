@@ -56,7 +56,7 @@ jobs:
           submodules: recursive
           fetch-depth: 0
       - name: Checkout architecture repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: architecture
           repository: konflux-ci/architecture
