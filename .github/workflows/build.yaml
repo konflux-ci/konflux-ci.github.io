@@ -60,6 +60,10 @@ jobs:
         with:
           name: api-docs
           path: website/content/ref/
+      - name: Convert jekyll to hugo (api)
+        run: mv website/content/ref/index.md website/content/ref/_index.md
+      - name: Convert jekyll to hugo (architecture)
+        run: mv website/content/architecture/index.md website/content/architecture/_index.md
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
