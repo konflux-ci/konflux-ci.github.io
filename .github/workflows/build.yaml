@@ -27,11 +27,22 @@ defaults:
     shell: bash
 
 jobs:
+  api-docs:
+    uses: ./.github/workflows/api-docs.yaml
+    secrets: inherit
+
+  adr-index:
+    uses: ./.github/workflows/adr-index.yaml
+    secrets: inherit
+
   # Build job
-  hugo:
+  hugo build:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.124.0
+    needs:
+      - api-docs
+      - adr-index
     steps:
       - name: Install Hugo CLI
         run: |
@@ -39,11 +50,26 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
       - name: Install Dart Sass
         run: sudo snap install dart-sass
-      - name: Checkout
+      - name: Checkout main site
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Checkout architecture repo
+        uses: actions/checkout@v3
+        with:
+          path: architecture
+          repository: konflux-ci/architecture
+      - name: Download generated API docs
+        uses: actions/download-artifact@v3
+        with:
+          name: api-docs
+          path: architecture/ref/
+      - name: Download generated ADR index
+        uses: actions/download-artifact@v3
+        with:
+          name: adr-index
+          path: architecture/ADR/
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
@@ -65,46 +91,6 @@ jobs:
         with:
           path: ./website/public
 
-  api-docs:
-    uses: ./.github/workflows/api-docs.yaml
-    secrets: inherit
-
-  adr-index:
-    uses: ./.github/workflows/adr-index.yaml
-    secrets: inherit
-
-  # Build job
-  architecture:
-    needs:
-      - api-docs
-      - adr-index
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          path: tmp/architecture
-          repository: konflux-ci/architecture
-      - name: Download generated API docs
-        uses: actions/download-artifact@v3
-        with:
-          name: api-docs
-          path: tmp/architecture/ref/
-      - name: Download generated ADR index
-        uses: actions/download-artifact@v3
-        with:
-          name: adr-index
-          path: tmp/architecture/ADR/
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./tmp/architecture/
-          destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-
   # Deployment job
   deploy:
     environment:
@@ -112,8 +98,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs:
-      - hugo
-      - architecture
+      - hugo build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
