@@ -53,18 +53,13 @@ jobs:
       - name: Checkout architecture repo
         uses: actions/checkout@v4
         with:
-          path: architecture
+          path: content
           repository: konflux-ci/architecture
       - name: Download generated API docs
         uses: actions/download-artifact@v3
         with:
           name: api-docs
-          path: architecture/ref/
-      - name: Download generated ADR index
-        uses: actions/download-artifact@v3
-        with:
-          name: adr-index
-          path: architecture/ADR/
+          path: content/ref/
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
