@@ -25,6 +25,12 @@ pluralizelisttitles = false
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "default"
 
+[[menu.main]]
+    name       = "User Guide"
+    identifier = "menu.userguide"
+    url        = "https://redhat-appstudio.github.io/docs.appstudio.io"
+    weight     = 2
+
 [params.carouselHomepage]
     enable = true
     auto_play = true
