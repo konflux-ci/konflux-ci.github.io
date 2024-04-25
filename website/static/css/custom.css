@@ -40,6 +40,12 @@
     background: #333333;
 }
 
+.navbar ul.nav>li>a {
+    color: #FFFFFF;
+    text-transform: none;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
 .home-carousel p {
     color: black;
     font-size: 20px;
