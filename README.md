@@ -1,4 +1,4 @@
-# konflux.dev
+# konflux-ci.github.io
 
 This repository contains the source code for the konflux-ci website hosted at
 [konflux-ci.dev](https://konflux-ci.dev/).
