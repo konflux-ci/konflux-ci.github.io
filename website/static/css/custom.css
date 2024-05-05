@@ -61,7 +61,7 @@
     height: 50%;
 }
 
-.doc-button {
+.try-button {
     display: block;
     flex-direction: column;
     justify-content: center;
@@ -72,7 +72,7 @@
     border: none;
     margin-top: 3em;
     margin-bottom: 3em;
-    width: 300px;
+    width: 200px;
     height: 60px;
     min-height: 56px;
     max-height: 56px;
@@ -83,7 +83,7 @@
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 24px;
     text-align: center;
     color: #FFFFFF;
