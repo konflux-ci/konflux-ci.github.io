@@ -2,4 +2,4 @@ weight: 4
 name: "Supply Chain Safeguards"
 icon: "iconoir-delivery-truck"
 url: ""
-description: "Verify container images against SLSA guidelines using Enterprise Contract rules."
+description: "Verify container images against major secure software frameworks or your own custom rules.
