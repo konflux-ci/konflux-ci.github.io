@@ -2,4 +2,4 @@ weight: 1
 name: "Build"
 icon: "iconoir-laptop-fix"
 url: ""
-description: "Containerize your Java, Python, Node, or Go code for OpenShift and Kubernetes."
+description: "Build artifacts of all kinds from source. Produce detailed provenance and accurate SBOMs."
