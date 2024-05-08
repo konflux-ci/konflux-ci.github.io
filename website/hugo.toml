@@ -1,7 +1,7 @@
 baseURL = 'https://konflux-ci.dev/'
 languageCode = 'en-us'
 title = 'Konflux'
-theme = 'github.com/devcows/hugo-universal-theme'
+theme = ['konflux', 'github.com/devcows/hugo-universal-theme']
 
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "en"
