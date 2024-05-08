@@ -28,7 +28,7 @@ pluralizelisttitles = false
 [[menu.main]]
     name       = "User Guide"
     identifier = "menu.userguide"
-    url        = "https://redhat-appstudio.github.io/docs.appstudio.io"
+    url        = "https://konflux-ci.dev/docs"
     weight     = 2
 
 [params.carouselHomepage]
