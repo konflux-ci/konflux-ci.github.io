@@ -2,7 +2,8 @@ weight: 1
 title: "Secure Builds Made Easy"
 description: >
   <div>
-    <p>Konflux-ci is an open source, cloud native software factory focused on making advanced supply chain security accessible to everyone.
+    <p>Konflux-ci is a cloud native software factory focused on software supply chain security.<br>
+    As an open source project, Konflux-ci aims to be an easy to use system which streamlines compliance with major software security frameworks.
     </p>
     <form>
       <button type="button" class="try-button" onclick="window.open('https://github.com/konflux-ci/konflux-ci?tab=readme-ov-file#konflux-ci', '_blank')">
