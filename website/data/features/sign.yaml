@@ -1,5 +1,5 @@
 weight: 2
 name: "Securely Sign"
-icon: "iconoir-shield-check"
+icon: "iconoir-package-lock"
 url: ""
 description: "Generate secure & detailed provenance, an immutable record of what exactly happened during each and every build step."
