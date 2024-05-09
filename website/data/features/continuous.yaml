@@ -1,5 +1,5 @@
 weight: 5
 name: "SCM Integration"
-icon: "iconoir-git-pull-request
+icon: "iconoir-git-pull-request"
 url: ""
 description: "Build in response to git events, post results of builds and tests back to your Pull or Merge requests"
