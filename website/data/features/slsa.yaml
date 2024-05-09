@@ -1,5 +1,5 @@
 weight: 4
 name: "Supply Chain Safeguards"
-icon: "iconoir-delivery-truck"
+icon: "iconoir-shield-check"
 url: ""
 description: "Verify container images against major secure software frameworks or your own custom rules."
