@@ -20,7 +20,17 @@ To deploy the website locally:
 
 1. Install Hugo: https://gohugo.io/installation/.
 2. Clone this repository and navigate to your clone.
-3. Fetch the hugo-universal-theme using the `git submodule update --init --` command
-4. Run: `hugo --source website server -D`.
+3. Run: `hugo --source website server -D`.
 
 This will start a local web server and will provide you the link to your local website.
+
+
+## Development
+
+### Updating the Hugo modules
+
+The website utilizes dependencies in the form of Hugo modules, the list of these
+can be seen in the `website/go.mod` file. To update those dependencies run:
+
+    $ cd website
+    $ hugo mod get -u
