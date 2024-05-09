@@ -1,5 +1,5 @@
 weight: 5
-name: "Streamline Development"
+name: "SCM Integration"
 icon: "iconoir-ease-curve-control-points"
 url: ""
-description: "Continuously build, test, and release out your applications."
+description: "Build in response to git events, post results of builds and tests back to your Pull or Merge requests"
