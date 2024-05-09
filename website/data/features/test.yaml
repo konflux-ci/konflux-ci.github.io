@@ -1,0 +1,5 @@
+weight: 5
+name: "Integration Tests"
+icon: "iconoir-ease-curve-control-points"
+url: ""
+description: "Execute integration tests for complex applications and see results in your SCM."
