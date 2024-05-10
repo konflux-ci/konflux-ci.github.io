@@ -2,4 +2,4 @@ weight: 2
 name: "Securely Sign"
 icon: "iconoir-package-lock"
 url: ""
-description: "Generate secure & detailed provenance, an immutable record of what exactly happened during each and every build step."
+description: "Generate secure & detailed provenance, an immutable record of what happened during each and every build step."
