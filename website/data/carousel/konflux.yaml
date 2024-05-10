@@ -1,10 +1,8 @@
 weight: 1
-title: "Welcome to Konflux"
+title: "Secure Builds Made Easy"
 description: >
   <div>
-    <p>Opinionated Kubernetes-native security-first software factory based on Tekton.<br>
-       Your one-stop shop for building, testing, and deploying source code with secure CI/CD.
-    </p>
+    <p>Konflux-ci is an open source, cloud-native software factory focused on software supply chain security.</p>
     <form>
       <button type="button" class="try-button" onclick="window.open('https://github.com/konflux-ci/konflux-ci?tab=readme-ov-file#konflux-ci', '_blank')">
         Try Konflux

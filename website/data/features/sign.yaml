@@ -1,5 +1,5 @@
 weight: 2
 name: "Securely Sign"
-icon: "iconoir-shield-check"
+icon: "iconoir-package-lock"
 url: ""
-description: "Apply attestations and cryptographic signatures and provenance with Tekton chains."
+description: "Generate secure & detailed provenance, an immutable record of what happened during each and every build step."

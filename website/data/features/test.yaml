@@ -1,0 +1,5 @@
+weight: 5
+name: "Integration Tests"
+icon: "iconoir-task-list"
+url: ""
+description: "Execute integration tests for complex applications and see results in your SCM."
