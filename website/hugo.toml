@@ -1,4 +1,4 @@
-baseURL = 'https://konflux-ci.org/'
+baseURL = 'https://konflux-ci.dev/'
 languageCode = 'en-us'
 title = 'Konflux'
 theme = ['konflux', 'github.com/devcows/hugo-universal-theme']
@@ -28,7 +28,7 @@ pluralizelisttitles = false
 [[menu.main]]
     name       = "User Guide"
     identifier = "menu.userguide"
-    url        = "https://konflux-ci.org/docs"
+    url        = "https://konflux-ci.dev/docs"
     weight     = 2
 
 [params.carouselHomepage]
