@@ -24,7 +24,6 @@ To deploy the website locally:
 
 This will start a local web server and will provide you the link to your local website.
 
-
 ## Development
 
 ### Updating the Hugo modules
