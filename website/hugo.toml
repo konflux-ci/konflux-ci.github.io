@@ -31,6 +31,24 @@ pluralizelisttitles = false
     url        = "https://konflux-ci.dev/docs"
     weight     = 2
 
+[[menu.arch]]
+    name       = "Architecture"
+    identifier = "menu.architecture"
+    url        = "https://konflux-ci.dev/architecture"
+    weight     = 2
+
+[[menu.community]]
+    name       = "Community"
+    identifier = "menu.community"
+    url        = "https://github.com/konflux-ci/community/?tab=readme-ov-file#welcome-to-the-konflux-community"
+    weight     = 2
+
+[[menu.support]]
+    name       = "Support"
+    identifier = "menu.support"
+    url        = "https://github.com/konflux-ci/support/"
+    weight     = 2
+
 [params.carouselHomepage]
     enable = true
     auto_play = true
