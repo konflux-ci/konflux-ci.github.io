@@ -15,6 +15,10 @@ paginate = 10
 # not pluralize title pages by default
 pluralizelisttitles = false
 
+# Allow analytics IDs from environment (used in CI via GitHub Actions secrets)
+[security.funcs]
+getenv = ['^HUGO_', '^CI$', '^GA_MEASUREMENT_ID$', '^AMPLITUDE_API_KEY$']
+
 [params]
     disabled_logo = false
     logo_text = "Konflux"
@@ -24,6 +28,9 @@ pluralizelisttitles = false
 
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "default"
+
+    # Privacy policy URL for cookie consent banner (Red Hat Privacy Statement)
+    privacy_policy_url = "https://www.redhat.com/en/about/privacy-policy"
 
 [[menu.main]]
     name       = "User Guide"
@@ -40,3 +47,10 @@ pluralizelisttitles = false
 [params.features]
     enable = true
     cols = 3 # Default: 3, Available values 2,3,4,6
+
+# Development server only (hugo server). Allows Amplitude and analytics CDNs to avoid CORB/CORS issues locally.
+[server]
+[[server.headers]]
+for = "/**"
+[server.headers.values]
+Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:; connect-src 'self' https: http:; img-src 'self' data: https: http:; style-src 'self' 'unsafe-inline' https: http:; font-src 'self' https: http:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"

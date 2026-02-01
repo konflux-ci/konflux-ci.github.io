@@ -1,2 +1,4 @@
 website/public/
 website/.hugo_build.lock
+_vendor/
+.vscode/
