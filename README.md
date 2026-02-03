@@ -18,11 +18,21 @@ https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
 To deploy the website locally:
 
+### Using Hugo directly
+
 1. Install Hugo: https://gohugo.io/installation/.
 2. Clone this repository and navigate to your clone.
 3. Run: `hugo --source website server -D`.
 
 This will start a local web server and will provide you the link to your local website.
+
+### Using containers (podman/docker)
+
+1. Build the container image: `podman build -t konflux-website .`
+2. Run the container: `podman run --rm -p 1313:1313 konflux-website`
+3. Access the site at http://localhost:1313/
+
+The containerized version uses the `hugomods/hugo:exts` image and serves the site with live reload enabled.
 
 ## Development
 
