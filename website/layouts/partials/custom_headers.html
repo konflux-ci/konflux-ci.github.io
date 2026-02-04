@@ -1,0 +1,31 @@
+{{ $ccVer := default "3.1.0" (index .Site.Data.versions "cookieconsent_version") }}
+{{ $gaID := getenv "GA_MEASUREMENT_ID" }}
+{{ $ampKey := getenv "AMPLITUDE_API_KEY" }}
+{{ if hugo.IsServer }}
+<script>window.__KONFLUX_DEBUG_ANALYTICS = true;</script>
+{{ end }}
+<!-- CookieConsent v3 (Orest Bida) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@{{ $ccVer }}/dist/cookieconsent.css">
+<!-- GA Consent Mode v2: set default denied before gtag.js loads -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+</script>
+{{ if $gaID }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gaID }}"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', '{{ $gaID }}');
+</script>
+{{ end }}
+{{ if $ampKey }}
+<script src="https://cdn.amplitude.com/script/{{ $ampKey }}.js"></script>
+<script>
+  (function(){ try { if (window.amplitude) { amplitude.setOptOut(true); amplitude.init('{{ $ampKey }}', { fetchRemoteConfig: true, autocapture: true }); } } catch (e) { if (window.__KONFLUX_DEBUG_ANALYTICS) console.error('[Konflux] Amplitude init error:', e); } })();
+</script>
+{{ end }}
