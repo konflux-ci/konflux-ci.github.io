@@ -1,4 +1,5 @@
 website/public/
 website/.hugo_build.lock
+website/node_modules/
 _vendor/
 .vscode/
