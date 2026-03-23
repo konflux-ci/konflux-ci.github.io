@@ -1,60 +1,118 @@
-# konflux-ci.github.io
+# Konflux Website
 
-This repository contains the source code for the konflux-ci website hosted at
-[konflux-ci.dev](https://konflux-ci.dev/).
+The official [Konflux](https://konflux-ci.dev) website
 
-The website is based on [Hugo](https://gohugo.io/) and
-[hugo-universal-theme](https://github.com/devcows/hugo-universal-theme).
+## Quick Start
 
-## Contributing
+**Prerequisites:** Node.js >= 20
 
-When new code is pushed to the repository's `main` branch, it triggers a GitHub action
-that renders the website HTML and CSS files using Hugo, and pushes those artifacts to
-the repository's GitHub Page which is reachable at
-[konflux-ci.dev](https://konflux-ci.dev/).
+```bash
+yarn install    # Install dependencies
+yarn start      # Start dev server at http://localhost:3000
+```
 
-See more details here:
-https://gohugo.io/hosting-and-deployment/hosting-on-github/
+## Commands
 
-To deploy the website locally:
+| Command          | Description                            |
+| ---------------- | -------------------------------------- |
+| `yarn install`   | Install dependencies                   |
+| `yarn start`     | Dev server with hot reload             |
+| `yarn build`     | Production build to `build/`           |
+| `yarn serve`     | Serve production build locally         |
+| `yarn typecheck` | TypeScript type checking               |
+| `yarn clear`     | Clear Docusaurus cache                 |
+| `yarn swizzle`   | Eject/wrap Docusaurus theme components |
 
-1. Install Hugo: https://gohugo.io/installation/.
-2. Install node JS
-3. Clone this repository and navigate to your clone.
-4. Install JS dependencies: `npn install -C website`
-5. Run: `hugo --source website server -D`.
+> **Note:** This project uses **Yarn Berry (v4)**. Do not use `npm`, `npx`, or `pnpm`.
 
-This will start a local web server and will provide you the link to your local website.
+## Project Structure
 
-To test analytics and the cookie consent banner with real IDs locally, set the same environment variables used in CI (optional):
+```
+├── data/                        # YAML content files (landing, navigation, getting-started)
+├── docs/                        # Documentation pages (.md / .mdx)
+├── blog/                        # Blog posts
+├── src/
+│   ├── components/
+│   │   ├── ui/                  # Reusable UI primitives
+│   │   │   ├── IconCircle       # Circular icon container
+│   │   │   ├── ArrowSvg         # SVG arrow connector
+│   │   │   ├── SectionHeader    # Section label + heading + subtitle
+│   │   │   ├── GradientBackground  # Decorative gradient overlay
+│   │   │   ├── DataDrivenButton # YAML-driven link button
+│   │   │   └── DynamicIcon      # Resolves PF icon by string name
+│   │   ├── Landing/             # Landing page sections
+│   │   │   ├── HeroSection
+│   │   │   ├── WhyKonfluxSection
+│   │   │   ├── TourFactorySection
+│   │   │   ├── LifecycleSection
+│   │   │   └── BottomCTASection
+│   │   └── NavbarItems/         # Custom PatternFly navbar items
+│   │       ├── DefaultNavbarItem  # PF Button-based nav link
+│   │       ├── GitHubStars        # Live GitHub star counter
+│   │       └── CustomButton       # Navbar CTA button
+│   ├── theme/                   # Swizzled Docusaurus theme components
+│   │   ├── Navbar/              # Wrapped (pass-through)
+│   │   ├── NavbarItem/          # Ejected ComponentTypes (custom item registry)
+│   │   ├── Footer/              # Ejected (custom PatternFly footer)
+│   │   └── Layout/              # Wrapped (pass-through)
+│   ├── clientModules/           # Browser-side scripts (theme sync)
+│   ├── css/                     # Stylesheets
+│   ├── pages/                   # Standalone pages
+│   └── types/                   # TypeScript type definitions
+├── static/                      # Static assets (images, fonts, favicons)
+├── docusaurus.config.ts         # Site configuration
+└── sidebars.ts                  # Sidebar structure
+```
 
-    $ export GA_MEASUREMENT_ID=G-XXXXXXXXXX
-    $ export AMPLITUDE_API_KEY=your-amplitude-api-key
-    $ hugo --source website server -D
+## Architecture
 
-If these are unset, the site still runs; analytics scripts are simply omitted.
+### Content/Code Separation
 
-## Development
+All text content lives in **`/data/*.yaml`** files. React components receive data via typed props and never contain hardcoded content strings. A content author should never need to open a `.tsx` file to edit text.
 
-### Analytics and cookie consent
+- `data/landing.yaml` — Landing page content (hero, features, lifecycle steps)
+- `data/navigation.yaml` — Header nav items and footer links
+- `data/getting-started.yaml` — Getting started page content
 
-A single script (`/js/konflux-analytics.js`) is built by Hugo (js.Build) and loaded in the HEAD. It includes [Vanilla CookieConsent v3](https://cookieconsent.orestbida.com/) and the Amplitude SDK (vendored via npm); only gtag is loaded from googletagmanager.com. Configuration (GA ID, Amplitude key, privacy URL, debug) is set at build time in this repo; other CMS that embed the script from konflux-ci.dev add one script tag and do not set any config.
+### Editing Content
 
-Analytics run only after the user accepts the “Analytics” category. The cookie banner links to the [Red Hat Privacy Statement](https://www.redhat.com/en/about/privacy-policy) (or the URL set in `privacy_policy_url` in `website/hugo.toml`).
+#### Landing Page
 
-Production analytics IDs are **not** committed. Configure them as GitHub Actions secrets:
+Edit `data/landing.yaml` to change hero text, feature cards, lifecycle steps, and CTAs.
 
-- **GA_MEASUREMENT_ID** — your GA4 Measurement ID (e.g. `G-XXXXXXXXXX`)
-- **AMPLITUDE_API_KEY** — your Amplitude project API key
+#### Navigation
 
-Add them under **Repository Settings → Secrets and variables → Actions**. The build job passes them into Hugo so the analytics bundle receives them at build time.
+Edit `data/navigation.yaml` to change footer links.
 
-**CORB / CORS with Amplitude locally:** The dev server is configured (see `[server]` in `website/hugo.toml`) with permissive Content-Security-Policy headers so script and connect sources for Amplitude and other analytics are allowed. The `[server]` section is used only by `hugo server` and does not affect production builds.
+#### Blog
 
-### Updating the Hugo modules
+Add posts in `blog/` with the naming convention `YYYY-MM-DD-slug.md`.
 
-The website utilizes dependencies in the form of Hugo modules, the list of these
-can be seen in the `website/go.mod` file. To update those dependencies run:
+### Tech Stack
 
-    $ cd website
-    $ hugo mod get -u
+- **Framework:** Docusaurus v3 with React 19
+- **UI Library:** [PatternFly 6](https://www.patternfly.org/) for components, layout, and design tokens
+- **Language:** TypeScript (strict mode)
+- **Content:** YAML data files loaded via webpack (yaml-loader)
+- **Deployment:** GitHub Pages via GitHub Actions
+
+### PatternFly Integration
+
+- PatternFly base CSS imported in `src/css/custom.css`
+- Dark theme synced automatically — when Docusaurus theme changes, `pf-v6-theme-dark` class is toggled on `<html>` via a client module
+- Custom navbar items use PatternFly `Button variant="plain"` as the base component
+- Footer is a fully custom PatternFly component
+
+### Custom Navbar Items
+
+Navbar items are registered in `src/theme/NavbarItem/ComponentTypes.tsx` and used via `type: "custom-<name>"` in `docusaurus.config.ts`:
+
+```typescript
+// docusaurus.config.ts
+navbar: {
+  items: [
+    { to: '/docs', label: 'Docs', position: 'left' },           // Uses PatternFly Button
+    { type: 'custom-githubStars', position: 'right' },           // Live star counter
+  ],
+}
+```

@@ -1,0 +1,46 @@
+{
+  "name": "Konflux Website",
+  // --- Docker Compose Configuration ---
+  "initializeCommand": "test -f .devcontainer/docker-compose.local.yml || echo 'services:\n  workspace: {}' > .devcontainer/docker-compose.local.yml",
+  "dockerComposeFile": [
+    "docker-compose.yml",
+    "docker-compose.local.yml"
+  ],
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/konflux-ci.github.io",
+  // --- Forwarded Ports ---
+  "forwardPorts": [
+    3000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Docusaurus Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+  // --- Lifecycle Commands ---
+  "postCreateCommand": "sudo chown -R node:node /home/node/.claude 2>/dev/null || true && sudo corepack enable && yarn install && sudo npx -y playwright install --with-deps chromium",
+  // --- Features ---
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  // --- VS Code Customizations ---
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-yaml",
+        "unifiedjs.vscode-mdx",
+        "ms-azuretools.vscode-containers",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  }
+}

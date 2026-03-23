@@ -1,0 +1,92 @@
+# /data/getting-started.yaml
+# Content for the Getting Started page (/getting-started).
+# Content team: edit this file to update getting started guide.
+
+breadcrumbs:
+  - label: "Home"
+    href: "/"
+  - label: "Getting Started"
+    href: "/getting-started"
+
+title: "Getting Started with Konflux"
+subtitle: "Get your first secure CI/CD pipeline running in minutes. Follow these steps to set up Konflux and start producing tamper-proof software builds."
+
+steps:
+  - number: 1
+    icon: "CheckCircleIcon"
+    title: "Prerequisites"
+    description: "Before you begin, ensure you have access to a Konflux instance and the required tools installed."
+    items:
+      - "A Kubernetes cluster"
+      - "kubectl CLI tool"
+      - "A GitHub or GitLab account"
+      - "Container registry access"
+
+  - number: 2
+    icon: "TerminalIcon"
+    title: "Install Konflux"
+    description: "Deploy Konflux to your cluster using the provided Helm chart or operator."
+    items:
+      - "Clone the konflux-ci repository"
+      - "Configure your values.yaml"
+      - "Deploy using helm install"
+      - "Verify all pods are running"
+
+  - number: 3
+    icon: "LinkIcon"
+    title: "Connect Your Repository"
+    description: "Link your git repository to Konflux to start automated pipeline builds."
+    items:
+      - "Log in to the Konflux console"
+      - "Create a new application"
+      - "Add your git repository URL"
+      - "Configure build settings"
+
+  - number: 4
+    icon: "RocketIcon"
+    title: "Run Your First Build"
+    description: "Trigger your first Konflux pipeline and watch it build, sign, and verify your software."
+    items:
+      - "Push a commit to trigger the pipeline"
+      - "Monitor the build in the console"
+      - "View generated SBOM and provenance"
+      - "Release your verified artifacts"
+
+quickLinks:
+  title: "Quick Links"
+  icon: "BookOpenIcon"
+  items:
+    - title: "Installation Guide"
+      description: "Step-by-step cluster setup"
+      href: "#"
+    - title: "Core Concepts"
+      description: "Understanding pipelines & builds"
+      href: "#"
+    - title: "API Reference"
+      description: "Interact with Konflux APIs"
+      href: "#"
+    - title: "Video Tutorials"
+      description: "Watch and learn"
+      href: "#"
+
+terminalBlock:
+  commands: |
+    # Clone the repo
+    git clone https://github.com/konflux-ci/konflux-ci
+
+    # Deploy with Helm
+    helm install konflux . \
+      --namespace konflux
+  linkLabel: "Full install docs →"
+  linkHref: "#"
+
+bottomCTA:
+  heading: "Ready to build securely?"
+  subtitle: "Join thousands of developers already using Konflux to ship secure software faster."
+  primaryCTA:
+    label: "View on GitHub"
+    href: "https://github.com/konflux-ci/konflux-ci"
+    icon: "GithubIcon"
+  secondaryCTA:
+    label: "Join the community"
+    href: "https://github.com/konflux-ci/community"

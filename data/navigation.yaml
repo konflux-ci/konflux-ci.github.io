@@ -1,0 +1,45 @@
+# /data/navigation.yaml
+# Header navigation and footer links.
+# Content team: edit this file to change nav items and footer links.
+
+# Header is configured in docusaurus.config.js.
+# Edit that file to change header structure, styling, or add dropdowns.
+# This file only controls the label and href of footer only.
+header:
+
+footer:
+  tagline: "Open-source CI/CD for secure, rock-solid software delivery. Built on Tekton, Sigstore, and Kubernetes."
+  columns:
+    - heading: "LEARN"
+      links:
+        - label: "Getting Started"
+          href: "/getting-started"
+        - label: "Documentation"
+          href: "https://konflux-ci.dev/docs"
+    - heading: "COMMUNITY"
+      links:
+        - label: "Community Hub"
+          href: "https://github.com/konflux-ci/community"
+        - label: "GitHub"
+          href: "https://github.com/konflux-ci"
+        - label: "Slack"
+          href: "https://konflux-ci.slack.com"
+    - heading: "SUPPORT"
+      links:
+        - label: "Support Center"
+          href: "https://github.com/konflux-ci/support"
+        - label: "GitHub Issues"
+          href: "https://github.com/konflux-ci/konflux-ci/issues"
+        - label: "Release Notes"
+          href: "https://github.com/konflux-ci/konflux-ci/releases"
+  bottomBar:
+    copyright: "© 2024 Konflux Community. Apache 2.0 License."
+    links:
+      - label: "GitHub"
+        href: "https://github.com/konflux-ci"
+      - label: "Privacy"
+        href: "#"
+      - label: "Terms"
+        href: "#"
+      - label: "Accessibility"
+        href: "#"

@@ -1,0 +1,57 @@
+/* PatternFly 6 base styles */
+@import "@patternfly/react-core/dist/styles/base-no-reset.css";
+
+/* PatternFly 6 display utilities (responsive show/hide) */
+@import "@patternfly/react-styles/css/utilities/Display/display.css";
+
+/* Konflux brand overrides (orange CTA + section label) */
+@import "./brand-overrides.css";
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #0066cc;
+  --ifm-color-primary-dark: #005cb8;
+  --ifm-color-primary-darker: #0057ad;
+  --ifm-color-primary-darkest: #00478f;
+  --ifm-color-primary-light: #0070e0;
+  --ifm-color-primary-lighter: #0075eb;
+  --ifm-color-primary-lightest: #0a85ff;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #6db1f7;
+  --ifm-color-primary-dark: #4b9ff5;
+  --ifm-color-primary-darker: #3a96f4;
+  --ifm-color-primary-darkest: #0d7bec;
+  --ifm-color-primary-light: #8fc3f9;
+  --ifm-color-primary-lighter: #a0ccfa;
+  --ifm-color-primary-lightest: #d2e7fd;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth theme transitions */
+html {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Ensure PatternFly components transition smoothly */
+.pf-v6-c-button,
+.pf-v6-c-label,
+.pf-v6-c-badge,
+.pf-v6-c-masthead {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}

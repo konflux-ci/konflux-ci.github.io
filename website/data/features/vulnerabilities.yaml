@@ -1,5 +1,0 @@
-weight: 3
-name: "Identify Vulnerabilities"
-icon: "iconoir-shield-search"
-url: ""
-description: "Catch critical vulnerabilities quickly with each pull request."

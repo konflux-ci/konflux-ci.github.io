@@ -1,5 +1,25 @@
-website/public/
-website/.hugo_build.lock
-website/node_modules/
-_vendor/
-.vscode/
+node_modules
+dist
+build
+.docusaurus
+
+# Yarn Berry - node_modules linker
+
+.yarn/.cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# local working files
+prd.xml
+tasks.json
+.claude/**/*
+ralph.sh
+.playwright-mcp 
+claude-*.txt
+screenshots
+.lighthouse-*.json
+
+# devcontainer user-specific overrides
+.devcontainer/docker-compose.local.yml
+.devcontainer/.env
