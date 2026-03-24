@@ -1,0 +1,46 @@
+/* Brand CSS overrides for Konflux website.
+   These are the ONLY two custom CSS classes allowed in the project.
+   All other styling must use PatternFly tokens and components. */
+
+/* Konflux brand color tokens */
+:root {
+  --konflux-brand-orange: #fc783d;
+  --konflux-brand-orange-hover: #d36634;
+  --konflux-brand-orange-text: #ffffff;
+
+  /* Illustration colors - light theme (blue) */
+  --konflux-illustration-primary-dark: #21134d;
+  --konflux-illustration-primary: #92c5f9;
+  --konflux-illustration-accent: #b9dafc;
+  --konflux-illustration-background: #b9dafc;
+}
+
+[data-theme="dark"] {
+  --konflux-brand-orange: #e05c3b;
+  --konflux-brand-orange-hover: #b94c2a;
+  --konflux-brand-orange-text: #ffffff;
+
+  /* Illustration colors - dark theme (grayscale) */
+  --konflux-illustration-primary-dark: #292929;
+  --konflux-illustration-primary: #4d4d4d;
+  --konflux-illustration-accent: #c7c7c7;
+  --konflux-illustration-background: #c7c7c7;
+}
+
+/* Orange CTA button override — applied via className="pf-m-brand-orange" */
+.pf-m-brand-orange.pf-v6-c-button {
+  --pf-v6-c-button--m-primary--BackgroundColor: var(--konflux-brand-orange);
+  --pf-v6-c-button--m-primary--hover--BackgroundColor: var(
+    --konflux-brand-orange-hover
+  );
+  --pf-v6-c-button--m-primary--Color: var(--konflux-brand-orange-text);
+  --pf-v6-c-button--m-primary--hover--Color: var(--konflux-brand-orange-text);
+}
+
+/* Section label — applied via className="section-label" */
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: var(--pf-v6-global--FontSize--sm);
+  color: var(--pf-v6-global--primary-color--100);
+}

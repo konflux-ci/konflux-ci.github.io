@@ -1,0 +1,8 @@
+services:
+  workspace:
+    image: mcr.microsoft.com/devcontainers/javascript-node:24-bookworm
+    command: sleep infinity
+    environment:
+      BROWSER: "none"
+    volumes:
+      - ..:/workspaces/konflux-ci.github.io:cached

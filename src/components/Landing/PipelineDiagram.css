@@ -1,0 +1,9 @@
+/* Pipeline diagram arrows: rotate on mobile when layout is vertical */
+@media (max-width: 768px) {
+  .pipeline-arrow {
+    transform: rotate(90deg);
+  }
+  .pipeline-arrow svg {
+    width: 50px;
+  }
+}
