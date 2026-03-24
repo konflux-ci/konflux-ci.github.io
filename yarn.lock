@@ -197,6 +197,103 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@amplitude/analytics-browser@npm:^2.37.1":
+  version: 2.37.1
+  resolution: "@amplitude/analytics-browser@npm:2.37.1"
+  dependencies:
+    "@amplitude/analytics-core": "npm:2.43.1"
+    "@amplitude/plugin-autocapture-browser": "npm:1.24.2"
+    "@amplitude/plugin-custom-enrichment-browser": "npm:0.1.1"
+    "@amplitude/plugin-network-capture-browser": "npm:1.9.10"
+    "@amplitude/plugin-page-url-enrichment-browser": "npm:0.7.1"
+    "@amplitude/plugin-page-view-tracking-browser": "npm:2.9.2"
+    "@amplitude/plugin-web-vitals-browser": "npm:1.1.25"
+    tslib: "npm:^2.4.1"
+  checksum: 10c0/3e7dc9217e400d971efb434b7487bc30475336aff257162425709488e17b2449393ae48302450146c0208c95021940097493b0c8558e6a82655cd62a0092dc83
+  languageName: node
+  linkType: hard
+
+"@amplitude/analytics-connector@npm:^1.6.4":
+  version: 1.6.4
+  resolution: "@amplitude/analytics-connector@npm:1.6.4"
+  checksum: 10c0/b084180029e48c011fffc47301462fc2db06830421348ca5fdf235fb6d30e4c0309161eb4392350bc00ab2bf7537306f18b9dfffa9998f70db2b6f31470f0e88
+  languageName: node
+  linkType: hard
+
+"@amplitude/analytics-core@npm:2.43.1":
+  version: 2.43.1
+  resolution: "@amplitude/analytics-core@npm:2.43.1"
+  dependencies:
+    "@amplitude/analytics-connector": "npm:^1.6.4"
+    "@types/zen-observable": "npm:0.8.3"
+    safe-json-stringify: "npm:1.2.0"
+    tslib: "npm:^2.4.1"
+    zen-observable: "npm:0.10.0"
+  checksum: 10c0/d6a2572e5d5f76656875ffc0e4d543268be6053aedab89e60c044a46202e4448155570b6389450bdbe193dc650c7145d5d4c875c16de36a84ee0e7a80a95319e
+  languageName: node
+  linkType: hard
+
+"@amplitude/plugin-autocapture-browser@npm:1.24.2":
+  version: 1.24.2
+  resolution: "@amplitude/plugin-autocapture-browser@npm:1.24.2"
+  dependencies:
+    "@amplitude/analytics-core": "npm:2.43.1"
+    tslib: "npm:^2.4.1"
+  checksum: 10c0/874e711cd0ce9d3a033fbd5c14809c647537d17b56bbdcbeb2c29840a849f83967ae58649cb8825dee915c05eab02af3b6535d3e7ae5b9344af27f8e5c55fcdc
+  languageName: node
+  linkType: hard
+
+"@amplitude/plugin-custom-enrichment-browser@npm:0.1.1":
+  version: 0.1.1
+  resolution: "@amplitude/plugin-custom-enrichment-browser@npm:0.1.1"
+  dependencies:
+    "@amplitude/analytics-core": "npm:2.43.1"
+    tslib: "npm:^2.4.1"
+  checksum: 10c0/9f3097146ef7e52e4f2c78fce01e7e4a71c76e085a3bd111f12c39ab390d589d0b3630066c841bb67017c30c2f6ee7fa0925401181304ea5dabb9473aba7abc6
+  languageName: node
+  linkType: hard
+
+"@amplitude/plugin-network-capture-browser@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@amplitude/plugin-network-capture-browser@npm:1.9.10"
+  dependencies:
+    "@amplitude/analytics-core": "npm:2.43.1"
+    tslib: "npm:^2.4.1"
+  checksum: 10c0/7db3292b24936e1eb01757f60f66b7186e1b32d8d8d97f36f08adb11113beacda0af967bba54368986a9cca69294a2bf8eb8aa736f4f1dc3498d36857970ac31
+  languageName: node
+  linkType: hard
+
+"@amplitude/plugin-page-url-enrichment-browser@npm:0.7.1":
+  version: 0.7.1
+  resolution: "@amplitude/plugin-page-url-enrichment-browser@npm:0.7.1"
+  dependencies:
+    "@amplitude/analytics-core": "npm:2.43.1"
+    tslib: "npm:^2.4.1"
+  checksum: 10c0/c594bdc1191924cd0fcbfeecd4491c2dd307d1a882736ca82fb14f55c6001520261d1d8818470f74639c5e8312c2ec19d17155b00be96e1b7bfa9b895be8f27d
+  languageName: node
+  linkType: hard
+
+"@amplitude/plugin-page-view-tracking-browser@npm:2.9.2":
+  version: 2.9.2
+  resolution: "@amplitude/plugin-page-view-tracking-browser@npm:2.9.2"
+  dependencies:
+    "@amplitude/analytics-core": "npm:2.43.1"
+    tslib: "npm:^2.4.1"
+  checksum: 10c0/ee5ac245dc10adda5f80b6d8ff572fc22f07c5a47d915cbf477569998d129b8df4b7b9f3c89d0cdb6a5fd6c43992f5246ee2315ebc39934113413b77dd321d87
+  languageName: node
+  linkType: hard
+
+"@amplitude/plugin-web-vitals-browser@npm:1.1.25":
+  version: 1.1.25
+  resolution: "@amplitude/plugin-web-vitals-browser@npm:1.1.25"
+  dependencies:
+    "@amplitude/analytics-core": "npm:2.43.1"
+    tslib: "npm:^2.4.1"
+    web-vitals: "npm:5.1.0"
+  checksum: 10c0/0b214d8759e4b8470c52648bd6500fd354a752beee544f90158f056de22ca42ab976fabe1d63b88b061eef3bec0181cc37b636197875501a2b567869a6717884
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.28.6, @babel/code-frame@npm:^7.29.0":
   version: 7.29.0
   resolution: "@babel/code-frame@npm:7.29.0"
@@ -4056,6 +4153,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/zen-observable@npm:0.8.3":
+  version: 0.8.3
+  resolution: "@types/zen-observable@npm:0.8.3"
+  checksum: 10c0/c0605d109e58a32c9b47ab9becb4ee4bcd8ed54f452ccdcfbb025a60eb8abb1341f00fb045caaa6f1a72f1299f2cdf7b7918023aef34bd9bfdfdbae0e21e66eb
+  languageName: node
+  linkType: hard
+
 "@ungap/structured-clone@npm:^1.0.0":
   version: 1.3.0
   resolution: "@ungap/structured-clone@npm:1.3.0"
@@ -5983,6 +6087,13 @@ __metadata:
   dependencies:
     is-obj: "npm:^2.0.0"
   checksum: 10c0/30e51ec6408978a6951b21e7bc4938aad01a86f2fdf779efe52330205c6bb8a8ea12f35925c2029d6dc9d1df22f916f32f828ce1e9b259b1371c580541c22b5a
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^17.3.1":
+  version: 17.3.1
+  resolution: "dotenv@npm:17.3.1"
+  checksum: 10c0/c78e0c2d5a549c751e544cc60e2b95e7cb67e0c551f42e094d161c6b297aa44b630a3c2dcacf5569e529a6c2a6b84e2ab9be8d37b299d425df5a18b81ce4a35f
   languageName: node
   linkType: hard
 
@@ -7970,6 +8081,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "konflux-website@workspace:."
   dependencies:
+    "@amplitude/analytics-browser": "npm:^2.37.1"
     "@docusaurus/core": "npm:3.9.2"
     "@docusaurus/module-type-aliases": "npm:3.9.2"
     "@docusaurus/preset-classic": "npm:3.9.2"
@@ -7982,11 +8094,14 @@ __metadata:
     "@types/js-yaml": "npm:^4.0.9"
     clsx: "npm:^2.0.0"
     critters: "npm:^0.0.25"
+    dotenv: "npm:^17.3.1"
     js-yaml: "npm:^4.1.1"
     prism-react-renderer: "npm:^2.3.0"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
+    terser: "npm:^5.46.1"
     typescript: "npm:~5.6.2"
+    vanilla-cookieconsent: "npm:^3.1.0"
     yaml-loader: "npm:^0.9.0"
   languageName: unknown
   linkType: soft
@@ -11400,6 +11515,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"safe-json-stringify@npm:1.2.0":
+  version: 1.2.0
+  resolution: "safe-json-stringify@npm:1.2.0"
+  checksum: 10c0/9c21c7b63a35a9e52d248eea2ad7bc9e790dde5aa418f0d4eed3c0b4c866e15337425b0d973173d30dd70a9e422271619f17e13574e0c8371d0c240cf72b871f
+  languageName: node
+  linkType: hard
+
 "safer-buffer@npm:>= 2.1.2 < 3, safer-buffer@npm:>= 2.1.2 < 3.0.0":
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
@@ -12160,6 +12282,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"terser@npm:^5.46.1":
+  version: 5.46.1
+  resolution: "terser@npm:5.46.1"
+  dependencies:
+    "@jridgewell/source-map": "npm:^0.3.3"
+    acorn: "npm:^8.15.0"
+    commander: "npm:^2.20.0"
+    source-map-support: "npm:~0.5.20"
+  bin:
+    terser: bin/terser
+  checksum: 10c0/45ba6566af976c518ff4e140250348d606761af822e23ea28d95b30fcf60fb69d3fabd93c6fafa4085d9fe31b67207e58b8480a64370b6cca07066c434101602
+  languageName: node
+  linkType: hard
+
 "thingies@npm:^2.5.0":
   version: 2.5.0
   resolution: "thingies@npm:2.5.0"
@@ -12260,7 +12396,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.6.0, tslib@npm:^2.7.0, tslib@npm:^2.8.1":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.4.1, tslib@npm:^2.6.0, tslib@npm:^2.7.0, tslib@npm:^2.8.1":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
@@ -12600,6 +12736,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vanilla-cookieconsent@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "vanilla-cookieconsent@npm:3.1.0"
+  checksum: 10c0/f344d9786ea74850ec4274d85c9049b4d36b3ff368ddb4a0e446bad2dc0ccfad03542e97f40f7eb103b9e06d8b4d5381f63f8f0f80d898f80c5bf3e96e877382
+  languageName: node
+  linkType: hard
+
 "vary@npm:~1.1.2":
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
@@ -12660,6 +12803,13 @@ __metadata:
   version: 2.0.1
   resolution: "web-namespaces@npm:2.0.1"
   checksum: 10c0/df245f466ad83bd5cd80bfffc1674c7f64b7b84d1de0e4d2c0934fb0782e0a599164e7197a4bce310ee3342fd61817b8047ff04f076a1ce12dd470584142a4bd
+  languageName: node
+  linkType: hard
+
+"web-vitals@npm:5.1.0":
+  version: 5.1.0
+  resolution: "web-vitals@npm:5.1.0"
+  checksum: 10c0/1af22ddbe2836ba880fcb492cfba24c3349f4760ebb5e92f38324ea67bca3c4dbb9c86f1a32af4795b6115cdaf98b90000cf3a7402bffef6e8c503f0d1b2e706
   languageName: node
   linkType: hard
 
@@ -13025,6 +13175,13 @@ __metadata:
   version: 1.2.2
   resolution: "yocto-queue@npm:1.2.2"
   checksum: 10c0/36d4793e9cf7060f9da543baf67c55e354f4862c8d3d34de1a1b1d7c382d44171315cc54abf84d8900b8113d742b830108a1434f4898fb244f9b7e8426d4b8f5
+  languageName: node
+  linkType: hard
+
+"zen-observable@npm:0.10.0":
+  version: 0.10.0
+  resolution: "zen-observable@npm:0.10.0"
+  checksum: 10c0/f97e97bfaa1dbe0033761d4860368120c1b69ee12dd1fa649c902f3f740c6cac3470a07e3dd00e2d41598dd9f17a97c80f69652b851ba1a73802f30748eb4260
   languageName: node
   linkType: hard
 

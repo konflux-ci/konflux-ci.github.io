@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start --host 0.0.0.0 --port 3000",
-    "build": "docusaurus build",
+    "start": "yarn build:analytics && docusaurus start --host 0.0.0.0 --port 3000",
+    "build": "yarn build:analytics && docusaurus build",
+    "build:analytics": "node scripts/build-analytics.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -15,6 +16,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.37.1",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
     "@mdx-js/react": "^3.0.0",
@@ -22,10 +24,12 @@
     "@patternfly/react-icons": "^6.4.0",
     "@patternfly/react-styles": "^6.4.0",
     "clsx": "^2.0.0",
+    "dotenv": "^17.3.1",
     "js-yaml": "^4.1.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
@@ -33,6 +37,7 @@
     "@docusaurus/types": "3.9.2",
     "@types/js-yaml": "^4.0.9",
     "critters": "^0.0.25",
+    "terser": "^5.46.1",
     "typescript": "~5.6.2",
     "yaml-loader": "^0.9.0"
   },

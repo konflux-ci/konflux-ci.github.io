@@ -1,0 +1,158 @@
+/**
+ * PatternFly theme for vanilla-cookieconsent
+ *
+ * This CSS overrides the default vanilla-cookieconsent styles.
+ * The base vanilla CSS is loaded by the standalone script (konflux-analytics.js).
+ * Loading order: vanilla CSS (script) → this file (overrides)
+ */
+
+/* Light theme - map all cookie consent variables to PatternFly tokens */
+:root {
+  /* Main backgrounds and colors */
+  --cc-bg: var(--pf-t--global--background--color--primary--default);
+  --cc-primary-color: var(--pf-t--global--text--color--regular);
+  --cc-secondary-color: var(--pf-t--global--text--color--subtle);
+
+  /* Primary buttons (Konflux brand orange) */
+  --cc-btn-primary-bg: var(--konflux-brand-orange);
+  --cc-btn-primary-color: var(--konflux-brand-orange-text);
+  --cc-btn-primary-border-color: var(--konflux-brand-orange);
+  --cc-btn-primary-hover-bg: var(--konflux-brand-orange-hover);
+  --cc-btn-primary-hover-color: var(--konflux-brand-orange-text);
+  --cc-btn-primary-hover-border-color: var(--konflux-brand-orange-hover);
+
+  /* Secondary buttons */
+  --cc-btn-secondary-bg: var(
+    --pf-t--global--background--color--secondary--default
+  );
+  --cc-btn-secondary-color: var(--pf-t--global--text--color--regular);
+  --cc-btn-secondary-border-color: var(
+    --pf-t--global--background--color--secondary--default
+  );
+  --cc-btn-secondary-hover-bg: var(
+    --pf-t--global--background--color--secondary--hover
+  );
+  --cc-btn-secondary-hover-color: var(--pf-t--global--text--color--regular);
+  --cc-btn-secondary-hover-border-color: var(
+    --pf-t--global--background--color--secondary--hover
+  );
+
+  /* Borders and separators */
+  --cc-separator-border-color: var(--pf-t--global--border--color--default);
+
+  /* Toggle switches */
+  --cc-toggle-on-bg: var(--pf-t--global--icon--color--brand--default);
+  --cc-toggle-off-bg: var(--pf-t--global--icon--color--subtle);
+  --cc-toggle-on-knob-bg: var(
+    --pf-t--global--background--color--primary--default
+  );
+  --cc-toggle-off-knob-bg: var(
+    --pf-t--global--background--color--primary--default
+  );
+  --cc-toggle-enabled-icon-color: var(
+    --pf-t--global--background--color--primary--default
+  );
+  --cc-toggle-disabled-icon-color: var(
+    --pf-t--global--background--color--primary--default
+  );
+  --cc-toggle-readonly-bg: var(
+    --pf-t--global--background--color--disabled--default
+  );
+  --cc-toggle-readonly-knob-bg: var(
+    --pf-t--global--background--color--primary--default
+  );
+  --cc-toggle-readonly-knob-icon-color: var(
+    --pf-t--global--background--color--disabled--default
+  );
+
+  /* Cookie category blocks */
+  --cc-section-category-border: var(--pf-t--global--border--color--default);
+  --cc-cookie-category-block-bg: var(
+    --pf-t--global--background--color--secondary--default
+  );
+  --cc-cookie-category-block-border: var(
+    --pf-t--global--border--color--default
+  );
+  --cc-cookie-category-block-hover-bg: var(
+    --pf-t--global--background--color--secondary--hover
+  );
+  --cc-cookie-category-block-hover-border: var(
+    --pf-t--global--border--color--hover
+  );
+  --cc-cookie-category-expanded-block-bg: transparent;
+  --cc-cookie-category-expanded-block-hover-bg: var(
+    --pf-t--global--background--color--secondary--hover
+  );
+
+  /* Overlay */
+  --cc-overlay-bg: rgba(0, 0, 0, 0.65);
+
+  /* Scrollbar */
+  --cc-webkit-scrollbar-bg: var(
+    --pf-t--global--background--color--secondary--default
+  );
+  --cc-webkit-scrollbar-hover-bg: var(
+    --pf-t--global--background--color--secondary--hover
+  );
+
+  /* Footer */
+  --cc-footer-bg: var(--pf-t--global--background--color--secondary--default);
+  --cc-footer-color: var(--pf-t--global--text--color--subtle);
+  --cc-footer-border-color: var(--pf-t--global--border--color--default);
+
+  /* Border radius */
+  --cc-modal-border-radius: var(--pf-t--global--border--radius--medium);
+  --cc-btn-border-radius: var(--pf-t--global--border--radius--small);
+
+  /* Shadows */
+  --cc-box-shadow: var(--pf-t--global--box-shadow--lg);
+}
+
+/* Dark theme - PatternFly automatically switches these tokens */
+:root.pf-v6-theme-dark {
+  /* Overlay - slightly darker in dark mode */
+  --cc-overlay-bg: rgba(0, 0, 0, 0.8);
+}
+
+/* Focus states using PatternFly indicators */
+#cc-main button:focus-visible {
+  outline: 2px solid var(--pf-t--color--blue--60);
+  outline-offset: 2px;
+}
+
+:root.pf-v6-theme-dark #cc-main button:focus-visible {
+  outline-color: var(--pf-t--color--blue--40);
+}
+
+/* Link focus states */
+#cc-main a:focus-visible {
+  outline: 2px solid var(--pf-t--color--blue--60);
+  outline-offset: 2px;
+  border-radius: var(--pf-t--global--border--radius--small);
+}
+
+:root.pf-v6-theme-dark #cc-main a:focus-visible {
+  outline-color: var(--pf-t--color--blue--40);
+}
+
+/* Custom width override - make consent modal 80% of viewport width */
+#cc-main .cm--box {
+  max-width: 80vw;
+  width: 80vw;
+}
+
+/* Ensure it doesn't get too wide on large screens */
+@media screen and (min-width: 1200px) {
+  #cc-main .cm--box {
+    max-width: 960px;
+    width: 960px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #cc-main .cm__body {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
