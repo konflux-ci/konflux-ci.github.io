@@ -1,0 +1,6 @@
+.section-header .label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: var(--pf-v6-global--FontSize--sm);
+  color: var(--pf-t--global--text--color--link--default);
+}

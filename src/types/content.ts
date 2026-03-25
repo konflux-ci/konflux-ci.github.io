@@ -230,3 +230,39 @@ export interface GettingStartedData {
     secondaryCTA: CTAButton;
   };
 }
+
+// ─── Try Konflux Page (/data/try-konflux.yaml) ───────────────
+
+export interface InstallationOption {
+  icon: string;
+  badge: string;
+  badgeColor: string;
+  title: string;
+  description: string;
+  features: string[];
+  link: DataLink;
+}
+
+export interface ComparisonTableColumn {
+  label: string;
+  key: string;
+}
+
+export interface ComparisonTableRow {
+  feature: string;
+  [key: string]: string; // Dynamic columns (kind, tsfcli, etc.)
+}
+
+export interface ComparisonTable {
+  heading: string;
+  columns: ComparisonTableColumn[];
+  rows: ComparisonTableRow[];
+}
+
+export interface TryKonfluxData {
+  sectionLabel: string;
+  heading: string;
+  subtitle: string;
+  installationOptions: InstallationOption[];
+  comparisonTable: ComparisonTable;
+}

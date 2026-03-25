@@ -1,0 +1,85 @@
+.comparison-table-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.comparison-table-heading {
+  text-align: left;
+  color: var(--pf-t--global--text--color--regular);
+}
+
+.comparison-table-desktop {
+  display: none;
+  border: 1px solid var(--pf-t--global--border--color--default);
+  border-radius: var(--pf-t--global--border--radius--small);
+  overflow: hidden;
+}
+
+.comparison-table-header-cell {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--pf-t--global--font--size--body--sm);
+  color: var(--pf-t--global--text--color--regular);
+  padding: var(--pf-t--global--spacer--md);
+  border-bottom: 2px solid var(--pf-t--global--border--color--default);
+  background-color: var(--pf-t--global--background--color--primary--default);
+}
+
+.comparison-table-cell {
+  padding: var(--pf-t--global--spacer--md);
+  color: var(--pf-t--global--text--color--subtle);
+  background-color: var(--pf-t--global--background--color--primary--default);
+}
+
+.comparison-table-cell.feature {
+  font-weight: 600;
+  color: var(--pf-t--global--text--color--regular);
+}
+
+.comparison-table-cell.striped {
+  background-color: var(--pf-t--global--background--color--secondary--default);
+}
+
+.comparison-table-cell.border-bottom {
+  border-bottom: 1px solid var(--pf-t--global--border--color--default);
+}
+
+.comparison-table-cell.border-right {
+  border-right: 1px solid var(--pf-t--global--border--color--default);
+}
+
+.comparison-table-mobile-card {
+  padding: var(--pf-t--global--spacer--md);
+  border: 1px solid var(--pf-t--global--border--color--default);
+  border-radius: var(--pf-t--global--border--radius--small);
+}
+
+.comparison-table-mobile-feature {
+  font-weight: 700;
+  margin-bottom: var(--pf-t--global--spacer--sm);
+  color: var(--pf-t--global--text--color--regular);
+}
+
+.comparison-table-mobile-label {
+  font-weight: 600;
+  font-size: var(--pf-t--global--font--size--body--sm);
+  text-transform: uppercase;
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+.comparison-table-mobile-value {
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+.comparison-table-mobile-row {
+  margin-bottom: var(--pf-t--global--spacer--sm);
+}
+
+@media (min-width: 480px) {
+  .comparison-table-desktop {
+    display: grid !important;
+  }
+  .comparison-table-mobile {
+    display: none !important;
+  }
+}

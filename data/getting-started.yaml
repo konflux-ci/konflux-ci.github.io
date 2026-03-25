@@ -58,7 +58,7 @@ quickLinks:
   items:
     - title: "Installation Guide"
       description: "Step-by-step cluster setup"
-      href: "#"
+      href: "/try-konflux"
     - title: "Core Concepts"
       description: "Understanding pipelines & builds"
       href: "#"

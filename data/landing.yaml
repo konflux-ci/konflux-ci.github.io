@@ -9,7 +9,7 @@ hero:
   tagline: "Your code deserves a factory, not a toolchain."
   primaryCTA:
     label: "Try Locally"
-    href: "/getting-started"
+    href: "/try-konflux"
     icon: "CodeIcon"
   pipelineDiagram:
     sourceCode:
