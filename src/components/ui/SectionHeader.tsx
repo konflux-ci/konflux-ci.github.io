@@ -1,28 +1,39 @@
 import type { ReactNode } from "react";
 import { Content, Flex, FlexItem, Title } from "@patternfly/react-core";
+import "./SectionHeader.css";
 
 interface SectionHeaderProps {
   sectionLabel: string;
   heading: string;
   subtitle: string;
+  align?: "left" | "center" | "right";
 }
+
+const alignItems: Record<
+  SectionHeaderProps["align"],
+  "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd"
+> = {
+  left: "alignItemsFlexStart",
+  center: "alignItemsCenter",
+  right: "alignItemsFlexEnd",
+};
 
 export default function SectionHeader({
   sectionLabel,
   heading,
   subtitle,
+  align = "center",
 }: SectionHeaderProps): ReactNode {
   return (
-    <>
+    <Flex
+      direction={{ default: "column" }}
+      alignItems={{
+        default: alignItems[align],
+      }}
+      className="section-header"
+    >
       <FlexItem>
-        <Content
-          component="p"
-          className="section-label"
-          style={{
-            textAlign: "center",
-            marginBottom: "var(--pf-t--global--spacer--md)",
-          }}
-        >
+        <Content component="p" className="label">
           {sectionLabel}
         </Content>
       </FlexItem>
@@ -33,9 +44,6 @@ export default function SectionHeader({
           size="2xl"
           style={{
             color: "var(--pf-t--global--text--color--regular)",
-            textAlign: "center",
-            maxWidth: "700px",
-            marginBottom: "var(--pf-t--global--spacer--md)",
           }}
         >
           {heading}
@@ -47,14 +55,11 @@ export default function SectionHeader({
           component="p"
           style={{
             color: "var(--pf-t--global--text--color--subtle)",
-            textAlign: "center",
-            maxWidth: "700px",
-            marginBottom: "var(--pf-t--global--spacer--2xl)",
           }}
         >
           {subtitle}
         </Content>
       </FlexItem>
-    </>
+    </Flex>
   );
 }

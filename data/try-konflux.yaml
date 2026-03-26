@@ -1,0 +1,69 @@
+# /data/try-konflux.yaml
+# All content for the Try Konflux page (/try-konflux).
+# Content team: edit this file to change Try Konflux page text.
+# Do NOT edit any .tsx files.
+
+sectionLabel: "TRY KONFLUX LOCALLY"
+heading: "Choose your installation method"
+subtitle: "Get Konflux running on your own cluster in minutes. Pick the method that best fits your environment and experience level."
+
+installationOptions:
+  - icon: "BoxIcon"
+    badge: "Recommended"
+    badgeColor: "blue"
+    title: "Local Installation with Kind"
+    description: "Deploy a fully functional Konflux instance locally using Kind (Kubernetes-in-Docker). The recommended approach for development, experimentation, and contribution — backed by the official installation guide."
+    features:
+      - "Uses Kind — Kubernetes-in-Docker"
+      - "Official Konflux CI deployment scripts"
+      - "Full UI, Tekton pipelines & signing included"
+    link:
+      label: "Install with Kind"
+      href: "/docs/installation/kind"
+      icon: "ArrowRightIcon"
+
+  - icon: "TerminalIcon"
+    badge: "Full factory setup"
+    badgeColor: "blue"
+    title: "Trusted Software Factory CLI"
+    description: "Use the tsf-cli to bootstrap a complete, production-ready Trusted Software Factory with automated configuration. One tool that wires everything together."
+    features:
+      - "End-to-end installation instructions"
+      - "Red Hat opinionated setup"
+      - "Integrates GitHub, pipelines & policies"
+    link:
+      label: "Install with tsf-cli"
+      href: "/docs/installation/tsf-cli"
+      icon: "ArrowRightIcon"
+
+comparisonTable:
+  heading: "Not sure which to pick?"
+  columns:
+    - label: "FEATURE"
+      key: "feature"
+    - label: "KIND"
+      key: "kind"
+    - label: "TSF-CLI"
+      key: "tsfcli"
+  rows:
+    - feature: "Target environment"
+      kind: "Local machine (Docker/Podman)"
+      tsfcli: "Cluster with cluster-admin access"
+    - feature: "Cluster tool"
+      kind: "Kind (Kubernetes-in-Docker)"
+      tsfcli: "Existing Kubernetes cluster"
+    - feature: "Setup complexity"
+      kind: "Low — deploy script handles it"
+      tsfcli: "Low — fully automated"
+    - feature: "Configuration"
+      kind: "kind-config.yaml + deploy script"
+      tsfcli: "Guided & opinionated"
+    - feature: "Best for"
+      kind: "Local dev & experimentation"
+      tsfcli: "Full factory from scratch"
+    - feature: "GitHub integration"
+      kind: "Manual config post-install"
+      tsfcli: "Automated"
+    - feature: "Tekton + pipelines"
+      kind: "Pre-configured"
+      tsfcli: "Pre-configured"

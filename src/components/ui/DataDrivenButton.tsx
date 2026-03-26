@@ -1,7 +1,10 @@
 import type { ReactNode } from "react";
 import { Button } from "@patternfly/react-core";
 import type { ButtonProps } from "@patternfly/react-core";
-import { ExternalLinkSquareAltIcon } from "@patternfly/react-icons";
+import {
+  ArrowRightIcon,
+  ExternalLinkSquareAltIcon,
+} from "@patternfly/react-icons";
 import type { DataLink } from "@site/src/types/content";
 import "./DataDrivenButton.css";
 
@@ -30,7 +33,9 @@ export default function DataDrivenButton({
       component="a"
       href={link.href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      icon={icon ?? (external ? <ExternalLinkSquareAltIcon /> : undefined)}
+      icon={
+        icon ?? (external ? <ExternalLinkSquareAltIcon /> : <ArrowRightIcon />)
+      }
       iconPosition="end"
       {...rest}
       className={`data-driven-button ${rest.className ?? ""}`}

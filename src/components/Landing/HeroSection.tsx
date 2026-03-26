@@ -12,6 +12,7 @@ import type { HeroData } from "@site/src/types/content";
 import { MainGradient } from "@site/src/components/ui/GradientBackground";
 import PipelineDiagram from "./PipelineDiagram";
 import { useSafeHref } from "@site/src/hooks/useSafeHref";
+import SafeLink from "../ui/SafeLink";
 
 interface HeroSectionProps {
   data: HeroData;
@@ -64,8 +65,8 @@ export default function HeroSection({ data }: HeroSectionProps): ReactNode {
                 size="lg"
                 className="pf-m-brand-orange"
                 icon={<CodeIcon />}
-                component="a"
-                href={getSafeHref(data.primaryCTA.href)}
+                component={(props) => <SafeLink {...props} />}
+                href={data.primaryCTA.href}
               >
                 {data.primaryCTA.label}
               </Button>
