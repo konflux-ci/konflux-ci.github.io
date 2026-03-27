@@ -3,9 +3,9 @@ import { Content, Flex, FlexItem, Title } from "@patternfly/react-core";
 import "./SectionHeader.css";
 
 interface SectionHeaderProps {
-  sectionLabel: string;
-  heading: string;
-  subtitle: string;
+  sectionLabel?: string;
+  heading?: string;
+  subtitle?: string;
   align?: "left" | "center" | "right";
 }
 
@@ -32,34 +32,40 @@ export default function SectionHeader({
       }}
       className="section-header"
     >
-      <FlexItem>
-        <Content component="p" className="label">
-          {sectionLabel}
-        </Content>
-      </FlexItem>
+      {sectionLabel && (
+        <FlexItem>
+          <Content component="p" className="label">
+            {sectionLabel}
+          </Content>
+        </FlexItem>
+      )}
 
-      <FlexItem>
-        <Title
-          headingLevel="h2"
-          size="2xl"
-          style={{
-            color: "var(--pf-t--global--text--color--regular)",
-          }}
-        >
-          {heading}
-        </Title>
-      </FlexItem>
+      {heading && (
+        <FlexItem>
+          <Title
+            headingLevel="h2"
+            size="2xl"
+            style={{
+              color: "var(--pf-t--global--text--color--regular)",
+            }}
+          >
+            {heading}
+          </Title>
+        </FlexItem>
+      )}
 
-      <FlexItem>
-        <Content
-          component="p"
-          style={{
-            color: "var(--pf-t--global--text--color--subtle)",
-          }}
-        >
-          {subtitle}
-        </Content>
-      </FlexItem>
+      {subtitle && (
+        <FlexItem>
+          <Content
+            component="p"
+            style={{
+              color: "var(--pf-t--global--text--color--subtle)",
+            }}
+          >
+            {subtitle}
+          </Content>
+        </FlexItem>
+      )}
     </Flex>
   );
 }

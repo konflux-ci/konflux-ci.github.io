@@ -8,66 +8,127 @@ breadcrumbs:
   - label: "Getting Started"
     href: "/getting-started"
 
-title: "Getting Started with Konflux"
-subtitle: "Get your first secure CI/CD pipeline running in minutes. Follow these steps to set up Konflux and start producing tamper-proof software builds."
+heading: "Getting Started with Konflux"
+subtitle: "Adopting new platforms is always challenging. While Konflux aims to use industry-standard terminology and processes, there are some additional concepts to be aware of. This page introduces the key ideas and Kubernetes Custom Resources that underpin everything Konflux does."
 
-steps:
-  - number: 1
-    icon: "CheckCircleIcon"
-    title: "Prerequisites"
-    description: "Before you begin, ensure you have access to a Konflux instance and the required tools installed."
-    items:
-      - "A Kubernetes cluster"
-      - "kubectl CLI tool"
-      - "A GitHub or GitLab account"
-      - "Container registry access"
+pageSections:
+  - heading: "Key Concepts"
+    steps:
+      - number: 1
+        icon: "LayerGroupIcon"
+        title: "Namespace"
+        description: "In Kubernetes, namespaces provide a foundational mechanism for isolating groups of resources within a single cluster. Konflux scopes all the resources and APIs you interact with to namespaces — including your components, applications, snapshots, secrets, and the Tekton PipelineRuns that perform builds, tests, and releases."
+        link:
+          label: "Kubernetes namespaces docs"
+          href: "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
 
-  - number: 2
-    icon: "TerminalIcon"
-    title: "Install Konflux"
-    description: "Deploy Konflux to your cluster using the provided Helm chart or operator."
-    items:
-      - "Clone the konflux-ci repository"
-      - "Configure your values.yaml"
-      - "Deploy using helm install"
-      - "Verify all pods are running"
+      - number: 2
+        icon: "CubeIcon"
+        title: "Tenant Namespace"
+        description: "Tenant namespaces are where Tekton Pipelines produce artifacts accessible by multiple team members according to their roles and permissions. In Konflux, you operate in a tenant namespace scoped to your team. One team can span multiple namespaces if needed, each with many applications and components."
+        items:
+          - Create components and applications
+          - Run the Tekton PipelineRuns defined in your Git repositories
+          - View and iterate on the results of your IntegrationTestScenarios
+          - Create releases for specific snapshots according to your ReleasePlans
 
-  - number: 3
-    icon: "LinkIcon"
-    title: "Connect Your Repository"
-    description: "Link your git repository to Konflux to start automated pipeline builds."
-    items:
-      - "Log in to the Konflux console"
-      - "Create a new application"
-      - "Add your git repository URL"
-      - "Configure build settings"
+      - number: 3
+        icon: "ShieldAltIcon"
+        title: "Managed Namespaces"
+        description: "Managed namespaces are where you manage release pipelines and credentials for your organization. The primary interaction between a tenant and managed namespaces involves creating a release in a tenant namespace that references a specific snapshot in the managed namespace, then triggering the release pipeline for that snapshot."
 
-  - number: 4
-    icon: "RocketIcon"
-    title: "Run Your First Build"
-    description: "Trigger your first Konflux pipeline and watch it build, sign, and verify your software."
-    items:
-      - "Push a commit to trigger the pipeline"
-      - "Monitor the build in the console"
-      - "View generated SBOM and provenance"
-      - "Release your verified artifacts"
+      - number: 4
+        icon: "RocketIcon"
+        title: "OCI Artifact"
+        description: "When you create a component in Konflux, the system pushes a build pipeline to the Git repository in the .tekton directory and installs a webhook. Upon a new push or pull request, the system runs the pipeline defined in the Git repository, describing the process necessary to build and test a specific artifact."
+
+      - number: 5
+        icon: "BezierCurveIcon"
+        title: "Build Pipeline"
+        description: "When you create a component in Konflux, the system pushes a build pipeline to the Git repository in the .tekton directory and installs a webhook. Upon a new push or pull request, the system runs the pipeline defined in the Git repository, describing the process necessary to build and test a specific artifact."
+        sections:
+          - title: "Build Tasks"
+            items:
+              - Cloning the Git repository
+              - Prefetching dependencies
+              - Building the OCI artifact
+              - Building the source SBOM
+              - Generating the source container
+          - title: "Test Tasks"
+            items:
+              - Running Snyk scans
+              - Checking for CVEs with clair-in-ci
+              - Running an antivirus scan on the artifact
+        link:
+          label: "Pipelines as Code (PaC)"
+          href: https://pipelinesascode.com/
+  - heading: "Custom Resources"
+    subtitle: "All Konflux APIs are Kubernetes Custom Resources (CRs). This means standard tools like kubectl can understand and interact with them just like Pods or Deployments."
+    steps:
+      - number: 1
+        icon: "PuzzlePieceIcon"
+        title: "Component"
+        description: "Describes the properties of an OCI artifact — including the Git repository from which the artifact originates, the latest built commit, initial build configuration parameters, and relationships to other components. Component names are unique in a namespace."
+
+      - number: 2
+        icon: "LayerGroupIcon"
+        title: "Application"
+        description: "An Application CR owns multiple components and logically groups them in the UI. When a new component's build pipeline completes, the Integration Service creates a new snapshot from each of the Component CRs, as well as the just-produced component artifact. IntegrationTestScenarios use this output to run."
+
+      - number: 3
+        icon: "FingerprintIcon"
+        title: "Snapshot"
+        description: "An immutable set of component references, created from each push or pull request events. A snapshot defines a set of components which are either tested or released together. Note that at any point in time, a given snapshot might not necessarily represent the latest built artifacts for all components in your namespace."
+
+      - number: 4
+        icon: "ClipboardCheckIcon"
+        title: "IntegrationTestScenario"
+        description: "A Tekton Pipeline that defines a test to run against an entire snapshot. The Integration Service runs all configured ITSs for the snapshot's application, including a default ITS for every new application to enable EnterpriseContractPolicy checks. Each ITS can be configured as optional for release."
+
+      - number: 5
+        icon: "ShieldCheckIcon"
+        title: "EnterpriseContractPolicy"
+        description: 'Konflux follows a "build once, release multiple times" mentality. You codify build requirements in an EnterpriseContractPolicy CR. When evaluated against a snapshot, it returns a single result based on the highest violation — if any single component fails, the overall result is a failure.'
+
+      - number: 6
+        icon: "DiagramProjectIcon"
+        title: "ReleasePlan"
+        description: "Maps an Application you want to release to a release action. Defines the process to release future Snapshots of your Application in the managed namespace, determines whether automatic releases are enabled, and whether you want to provide additional data to each future release pipeline."
+
+      - number: 7
+        icon: "CheckCircleIcon"
+        title: "ReleasePlanAdmission"
+        description: "Created in the managed namespace, this CR defines the specific pipeline to run and a given EnterpriseContractPolicy which must pass for each snapshot before that pipeline can proceed. It also establishes essential details about the delivery of your content."
+
+      - number: 8
+        icon: "RocketIcon"
+        title: "Release"
+        description: "Every time you want to release newly built artifacts, you create a Release CR in your tenant namespace. It represents your intent to release some content and, when present, will initiate the push of content. A Release CR references a specific Snapshot and ReleasePlan. ReleasePlans can also be configured for auto-release."
+
+alert:
+  type: "info"
+  title: "Auto-release"
+  content: "You can configure your ReleasePlan with auto-release enabled. When active, Konflux will generate releases automatically whenever your snapshots pass all their IntegrationTestScenarios."
 
 quickLinks:
   title: "Quick Links"
   icon: "BookOpenIcon"
   items:
-    - title: "Installation Guide"
-      description: "Step-by-step cluster setup"
+    - title: "Try Konflux Locally"
+      description: "Run Konflux on Kind or OpenShift"
       href: "/try-konflux"
-    - title: "Core Concepts"
-      description: "Understanding pipelines & builds"
-      href: "#"
-    - title: "API Reference"
-      description: "Interact with Konflux APIs"
-      href: "#"
-    - title: "Video Tutorials"
-      description: "Watch and learn"
-      href: "#"
+    - title: "Documentation"
+      description: "Full reference and guides"
+      href: "https://konflux-ci.dev/docs"
+    - title: "Glossary"
+      description: "Key terms and definitions"
+      href: "https://konflux-ci.dev/docs/glossary"
+    - title: "Kubernetes CRs"
+      description: "Konflux API reference"
+      href: "https://konflux-ci.dev/docs/references"
+    - title: "Community"
+      description: "Slack, forums & events"
+      href: "https://github.com/konflux-ci/community"
 
 terminalBlock:
   commands: |
@@ -81,12 +142,13 @@ terminalBlock:
   linkHref: "#"
 
 bottomCTA:
-  heading: "Ready to build securely?"
-  subtitle: "Join thousands of developers already using Konflux to ship secure software faster."
+  heading: "Ready to try Konflux?"
+  subtitle: "Follow the local installation guide to run Konflux on your own cluster."
   primaryCTA:
+    label: "Try Konflux"
+    href: "/try-konflux"
+    icon: "RocketIcon"
+  secondaryCTA:
     label: "View on GitHub"
     href: "https://github.com/konflux-ci/konflux-ci"
     icon: "GithubIcon"
-  secondaryCTA:
-    label: "Join the community"
-    href: "https://github.com/konflux-ci/community"

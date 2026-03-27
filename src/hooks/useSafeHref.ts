@@ -8,6 +8,9 @@ export function isExternalUrl(url: string): boolean {
 }
 
 /**
+ *
+ * @deprecated Use SafeLink component instead for automatic handling of internal vs external links.
+ *
  * Returns helper functions for working with URLs:
  * - getSafeHref: Applies useBaseUrlUtils for internal URLs, returns external URLs as-is
  * - isExternal: Checks if a URL is external

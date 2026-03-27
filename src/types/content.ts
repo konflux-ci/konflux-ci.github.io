@@ -190,12 +190,19 @@ export interface Breadcrumb {
   href: string;
 }
 
+export type List = string[];
+
 export interface GettingStartedStep {
   number: number;
   icon: string;
   title: string;
   description: string;
-  items: string[];
+  items: List;
+  sections: {
+    title: string;
+    items: List;
+  }[];
+  link?: DataLink;
 }
 
 export interface QuickLinkItem {
@@ -216,11 +223,22 @@ export interface TerminalBlockData {
   linkHref: string;
 }
 
+export interface PageSection {
+  heading: string;
+  subtitle?: string;
+  steps: GettingStartedStep[];
+}
+
 export interface GettingStartedData {
   breadcrumbs: Breadcrumb[];
-  title: string;
+  heading: string;
   subtitle: string;
-  steps: GettingStartedStep[];
+  pageSections: PageSection[];
+  alert?: {
+    type: "success" | "info" | "warning" | "danger";
+    title: string;
+    content: string;
+  };
   quickLinks: QuickLinksData;
   terminalBlock: TerminalBlockData;
   bottomCTA: {
