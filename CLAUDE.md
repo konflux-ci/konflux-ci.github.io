@@ -14,6 +14,37 @@ yarn serve            # Serve production build locally
 yarn swizzle          # Eject/wrap theme components
 ```
 
+## CRITICAL: Git Worktree Safety Rules
+
+**At the start of EVERY session, run:**
+
+```bash
+pwd && git worktree list
+```
+
+**If current directory appears in `git worktree list` (but is NOT the main worktree), you are in a worktree. Apply these rules:**
+
+- **ONLY** read/edit/create files within the current worktree directory
+- **NEVER** modify files in the parent/main repository
+- **ALWAYS** verify with `pwd` before file operations
+- All commands (`yarn build`, `yarn start`, git operations) execute from the worktree directory
+- Changes are isolated to the worktree's branch only
+- **DO NOT** use relative paths like `../../../` that escape the worktree
+
+**Example worktree detection:**
+
+```bash
+$ pwd
+/workspaces/konflux-ci.github.io/.claude/worktrees/try-konflux-page
+
+$ git worktree list
+/workspaces/konflux-ci.github.io                                     59b8635 [main]
+/workspaces/konflux-ci.github.io/.claude/worktrees/try-konflux-page  8d7e2c2 [try-konflux-page]
+                                                                      ^^^^^^^ ← You are HERE (worktree)
+```
+
+If `pwd` matches a non-first entry in `git worktree list` → you're in a worktree → enforce boundaries.
+
 ## Critical Files (Read FIRST every session)
 
 1. `git log --oneline -20` — recent changes
@@ -39,6 +70,7 @@ yarn swizzle          # Eject/wrap theme components
 ## Architecture Rules
 
 - Custom components: `src/components/`
+- Custom plugins: `src/plugins/` (e.g., googleGtagWithConsent.js)
 - Pages: `src/pages/` or `docs/`
 - Content data: `data/` (YAML files)
 - Type definitions: `src/types/content.ts`
@@ -49,8 +81,81 @@ yarn swizzle          # Eject/wrap theme components
   ```
 - Global PatternFly CSS in `src/css/custom.css`
 - Brand overrides (orange CTA, section labels) in `src/css/brand-overrides.css`
-- PatternFly dark theme: `pf-v6-theme-dark` class on `<html>` — synced via client module in `src/clientModules/themeListener.ts`
+- PatternFly dark theme: `pf-v6-theme-dark` class on `<html>` — synced via client module in `src/clientModules/htmlDarkClassSync.ts`
 - Client modules registered in `docusaurus.config.ts` under `clientModules` array
+- **CRITICAL**: Analytics uses standalone script (`static/js/konflux-analytics.js`) generated from `src/analytics-template.js` via `scripts/build-analytics.js`. This script is NOT a Docusaurus plugin.
+
+## Analytics
+
+### GDPR-Compliant Analytics (GA4 + Amplitude)
+
+**CRITICAL**: We use a **standalone analytics script** generated at build time, NOT a Docusaurus plugin.
+
+**Why standalone?**
+
+- Supports Google Consent Mode v2 (sets `gtag('consent', 'default')` BEFORE `gtag('config')`)
+- Bundles vanilla-cookieconsent, Google Analytics, and Amplitude in one optimized script
+- Includes Docusaurus-specific class persistence logic to handle SPA route changes
+- Works on both Docusaurus and Antora sites (auto-detects via `#__docusaurus` element)
+
+**Build Process:**
+
+1. `scripts/build-analytics.js` reads `src/analytics-template.js`
+2. Injects environment variables (`GA_MEASUREMENT_ID`, `AMPLITUDE_API_KEY`, `PRIVACY_POLICY_URL`)
+3. Minifies in production (terser)
+4. Outputs to `static/js/konflux-analytics.js`
+5. Script is loaded via `<script>` tag injected in `docusaurus.config.ts` (`headTags`)
+
+**Architecture:**
+
+- **Template**: `src/analytics-template.js` — ESM imports, placeholders, class sync logic
+- **Build script**: `scripts/build-analytics.js` — Variable injection, minification
+- **Output**: `static/js/konflux-analytics.js` — Self-contained analytics bundle
+- **Styling**: `src/css/cookie-consent.css` — PatternFly theming for consent modal
+
+**Docusaurus Integration:**
+
+- On Docusaurus sites, analytics script detects `#__docusaurus` and enables MutationObserver
+- Observer re-adds `show--consent` class when Docusaurus removes it during SPA navigation
+- Ensures cookie consent modal persists across route changes
+- On non-Docusaurus sites (Antora), class sync is skipped
+
+**Environment variables:**
+
+- `GA_MEASUREMENT_ID` - Google Analytics 4 tracking ID (optional)
+- `AMPLITUDE_API_KEY` - Amplitude project key (optional)
+- `PRIVACY_POLICY_URL` - Privacy policy link (defaults to Red Hat)
+
+**Build & Testing:**
+
+```bash
+# Build analytics script (runs automatically during yarn build)
+node scripts/build-analytics.js
+
+# Build with analytics enabled
+GA_MEASUREMENT_ID=G-XXXXXXXXXX AMPLITUDE_API_KEY=test-key yarn build
+
+# Verify static/js/konflux-analytics.js exists and contains:
+# - gtag('consent', 'default', {analytics_storage: 'denied'})
+# - CookieConsent initialization
+# - Docusaurus class sync (if not minified)
+
+# Browser: No tracking requests until user accepts consent
+```
+
+**Analytics Workflow:**
+
+- Changes to `src/analytics-template.js` require running `node scripts/build-analytics.js` to regenerate `static/js/konflux-analytics.js`
+- During development, manually run build script; during production build, it runs automatically
+- DO NOT import `vanilla-cookieconsent` in client modules — analytics script loads it from CDN
+- Single CookieConsent instance only (loaded in analytics script) — importing from npm creates conflicts
+
+**CRITICAL Rules:**
+
+- Analytics script is **standalone** — do NOT use Docusaurus gtag plugin
+- Class sync logic lives **inside** analytics script, not as a separate client module
+- Single CookieConsent instance (loaded from CDN in analytics script) — no npm import conflicts
+- Build script must run before deployment to inject environment variables
 
 ## UI Primitives (`src/components/ui/`)
 
@@ -64,6 +169,7 @@ Reusable building blocks shared across Landing and other page components. These 
 - **DynamicIcon** — Resolves PatternFly icon by string name from YAML (e.g., `"GithubIcon"` → `<GithubIcon />`). Critical for keeping icon choices in YAML, not code.
 
 Rules:
+
 - When building new sections, ALWAYS check if a ui/ primitive exists before creating custom markup
 - `DataDrivenButton` + `DynamicIcon` enable fully YAML-driven components — prefer them over hardcoded icons/links
 - New reusable primitives belong in `src/components/ui/`, NOT inline in page components
@@ -77,6 +183,7 @@ Custom PatternFly-based navbar item components registered in `src/theme/NavbarIt
 - **CustomButton** — Simple styled navbar CTA with primary/secondary variants.
 
 Rules:
+
 - Register new navbar item types in `src/theme/NavbarItem/ComponentTypes.tsx` with `"custom-<name>"` key
 - Use `type: "custom-<name>"` in `docusaurus.config.ts` navbar items
 - Mobile rendering: Docusaurus passes `mobile: true` — must use `menu__link`/`menu__list-item` classes
@@ -127,20 +234,30 @@ yarn add -D <package>     # Add dev dependency
 - `src/components/ui/` — Reusable UI primitives (IconCircle, ArrowSvg, SectionHeader, DataDrivenButton, DynamicIcon, GradientBackground)
 - `src/components/Landing/` — Landing page sections (HeroSection, WhyKonfluxSection, TourFactorySection, LifecycleSection, BottomCTASection)
 - `src/components/NavbarItems/` — Custom PatternFly navbar item components (DefaultNavbarItem, GitHubStars, CustomButton)
+- `src/plugins/` — Custom Docusaurus plugins (currently empty — analytics moved to standalone script)
+- `scripts/` — Build scripts
+  - `build-analytics.js` — Generates standalone analytics script from template
+- `src/analytics-template.js` — Analytics script template (vanilla-cookieconsent + GA4 + Amplitude + Docusaurus class sync)
 - `src/theme/NavbarItem/` — Swizzled navbar item type registry (ComponentTypes.tsx)
 - `src/theme/Navbar/` — Wrapped default navbar (pass-through)
 - `src/theme/Footer/` — Ejected custom PatternFly footer (reads navigation.yaml)
 - `src/theme/Layout/` — Wrapped default layout (pass-through)
-- `src/clientModules/` — Browser-side scripts (themeListener.ts for PatternFly dark theme sync)
-- `src/css/` — Stylesheets (`custom.css` for theme overrides)
+- `src/theme/Root.tsx` — Root wrapper (includes CookieConsent component)
+- `src/clientModules/` — Browser-side scripts
+  - `htmlDarkClassSync.ts` — Syncs PatternFly dark theme with Docusaurus theme
+- `src/css/` — Stylesheets
+  - `custom.css` — Global PatternFly imports + theme overrides
+  - `brand-overrides.css` — Konflux brand styles (orange CTA, section labels)
+  - `cookie-consent.css` — PatternFly theming for cookie consent modal
 - `src/pages/` — Standalone pages
 - `static/` — Static assets (images, fonts, favicons)
-- `docusaurus.config.ts` — Site config: metadata, navbar, footer, presets, clientModules
+- `docusaurus.config.ts` — Site config: metadata, navbar, footer, presets, clientModules, plugins
 - `sidebars.ts` — Sidebar structure (auto-generated from `docs/`)
 
 ## Docusaurus Conventions
 
 ### Swizzled Theme Components
+
 - `src/theme/Navbar/` — **Wrapped** (pass-through, default navbar preserved)
 - `src/theme/NavbarItem/ComponentTypes.tsx` — **Ejected** (registers custom PatternFly navbar item types)
 - `src/theme/Footer/` — **Ejected** (fully custom PatternFly footer, reads from `data/navigation.yaml` footer section)

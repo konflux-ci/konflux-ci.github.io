@@ -7,6 +7,9 @@
 /* Konflux brand overrides (orange CTA + section label) */
 @import "./brand-overrides.css";
 
+/* Cookie consent styling (PatternFly theming) */
+@import "./cookie-consent.css";
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to

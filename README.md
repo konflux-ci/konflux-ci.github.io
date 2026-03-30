@@ -28,40 +28,20 @@ yarn start      # Start dev server at http://localhost:3000
 ## Project Structure
 
 ```
-├── data/                        # YAML content files (landing, navigation, getting-started)
-├── docs/                        # Documentation pages (.md / .mdx)
-├── blog/                        # Blog posts
+├── data/                 # YAML content files
+├── docs/                 # Documentation pages
+├── blog/                 # Blog posts
 ├── src/
-│   ├── components/
-│   │   ├── ui/                  # Reusable UI primitives
-│   │   │   ├── IconCircle       # Circular icon container
-│   │   │   ├── ArrowSvg         # SVG arrow connector
-│   │   │   ├── SectionHeader    # Section label + heading + subtitle
-│   │   │   ├── GradientBackground  # Decorative gradient overlay
-│   │   │   ├── DataDrivenButton # YAML-driven link button
-│   │   │   └── DynamicIcon      # Resolves PF icon by string name
-│   │   ├── Landing/             # Landing page sections
-│   │   │   ├── HeroSection
-│   │   │   ├── WhyKonfluxSection
-│   │   │   ├── TourFactorySection
-│   │   │   ├── LifecycleSection
-│   │   │   └── BottomCTASection
-│   │   └── NavbarItems/         # Custom PatternFly navbar items
-│   │       ├── DefaultNavbarItem  # PF Button-based nav link
-│   │       ├── GitHubStars        # Live GitHub star counter
-│   │       └── CustomButton       # Navbar CTA button
-│   ├── theme/                   # Swizzled Docusaurus theme components
-│   │   ├── Navbar/              # Wrapped (pass-through)
-│   │   ├── NavbarItem/          # Ejected ComponentTypes (custom item registry)
-│   │   ├── Footer/              # Ejected (custom PatternFly footer)
-│   │   └── Layout/              # Wrapped (pass-through)
-│   ├── clientModules/           # Browser-side scripts (theme sync)
-│   ├── css/                     # Stylesheets
-│   ├── pages/                   # Standalone pages
-│   └── types/                   # TypeScript type definitions
-├── static/                      # Static assets (images, fonts, favicons)
-├── docusaurus.config.ts         # Site configuration
-└── sidebars.ts                  # Sidebar structure
+│   ├── components/       # React components
+│   ├── plugins/          # Custom Docusaurus plugins
+│   ├── theme/            # Swizzled theme components
+│   ├── clientModules/    # Browser-side scripts
+│   ├── css/              # Stylesheets
+│   ├── pages/            # Standalone pages
+│   └── types/            # TypeScript definitions
+├── static/               # Static assets
+├── docusaurus.config.ts  # Site configuration
+└── sidebars.ts           # Sidebar structure
 ```
 
 ## Architecture
@@ -102,6 +82,52 @@ Add posts in `blog/` with the naming convention `YYYY-MM-DD-slug.md`.
 - Dark theme synced automatically — when Docusaurus theme changes, `pf-v6-theme-dark` class is toggled on `<html>` via a client module
 - Custom navbar items use PatternFly `Button variant="plain"` as the base component
 - Footer is a fully custom PatternFly component
+
+### Analytics
+
+GDPR-compliant analytics using a **standalone script** generated at build time with [vanilla-cookieconsent](https://github.com/orestbida/cookieconsent) v3 and Google Consent Mode v2.
+
+**Environment Variables:**
+
+```bash
+GA_MEASUREMENT_ID=G-XXXXXXXXXX      # Google Analytics 4 (optional)
+AMPLITUDE_API_KEY=your-api-key      # Amplitude (optional)
+PRIVACY_POLICY_URL=/privacy         # Optional (defaults to Red Hat)
+```
+
+**How it Works:**
+
+1. **Build-time generation**: `scripts/build-analytics.js` reads `src/analytics-template.js`
+2. **Variable injection**: Replaces placeholders with actual environment values
+3. **Minification**: Terser minifies in production (keeps analytics debugging logs)
+4. **Output**: `static/js/konflux-analytics.js` — self-contained analytics bundle
+5. **Load**: Script loaded via `<script>` tag in `docusaurus.config.ts` (headTags)
+
+**Features:**
+
+- **Cookie Consent Modal**: Vanilla-cookieconsent with PatternFly theming
+- **Google Analytics**: gtag with Consent Mode v2 (`analytics_storage: denied` by default)
+- **Amplitude**: Loaded with `optOut: true`, updates on consent change
+- **Docusaurus SPA Support**: Auto-detects Docusaurus sites and persists consent modal classes across route changes
+
+**Flow:**
+
+```
+Page loads (consent=denied)
+→ User accepts analytics
+→ gtag('consent', 'update', {analytics_storage: 'granted'})
+→ Tracking starts
+```
+
+**Build:**
+
+```bash
+# Analytics script is generated automatically during yarn build
+yarn build
+
+# Or manually:
+node scripts/build-analytics.js
+```
 
 ### Custom Navbar Items
 

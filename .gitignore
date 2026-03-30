@@ -3,6 +3,10 @@ dist
 build
 .docusaurus
 
+# Environment variables
+.env
+.env.local
+
 # Yarn Berry - node_modules linker
 
 .yarn/.cache
@@ -23,3 +27,6 @@ screenshots
 # devcontainer user-specific overrides
 .devcontainer/docker-compose.local.yml
 .devcontainer/.env
+
+# generated analytics bundle using analytics-template.js
+static/js/konflux-analytics.js
