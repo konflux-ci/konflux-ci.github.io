@@ -78,3 +78,33 @@
 .option-card-cta {
   text-decoration: none;
 }
+
+/* Preview variant (for Dev Preview / Experimental features) */
+.option-card--preview {
+  border-color: var(--pf-t--global--border--color--nonstatus--orange--default);
+  background: linear-gradient(
+    to bottom,
+    var(--pf-t--global--background--color--primary--default),
+    rgba(236, 100, 0, 0.02)
+  );
+}
+
+.option-card--preview::before {
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(236, 100, 0, 0.15),
+    transparent 40%
+  );
+}
+
+.option-card--preview:hover {
+  border-color: var(--pf-t--global--border--color--nonstatus--orange--hover);
+}
+
+.option-card--preview .option-card-header {
+  background-color: var(--pf-t--global--color--nonstatus--orange--default);
+}
+
+.option-card--preview .option-card-icon {
+  color: var(--pf-t--global--icon--color--nonstatus--orange--default);
+}

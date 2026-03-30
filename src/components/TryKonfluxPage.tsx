@@ -3,7 +3,6 @@ import { PageSection, Flex, FlexItem, Gallery } from "@patternfly/react-core";
 import type { TryKonfluxData } from "@site/src/types/content";
 import SectionHeader from "@site/src/components/ui/SectionHeader";
 import OptionCard from "@site/src/components/ui/OptionCard";
-import ComparisonTable from "@site/src/components/ui/ComparisonTable";
 
 interface TryKonfluxPageProps {
   data: TryKonfluxData;
@@ -42,11 +41,9 @@ export default function TryKonfluxPage({
             <OptionCard key={option.title} option={option} />
           ))}
         </Gallery>
-        <FlexItem
-          alignSelf={{ default: "alignSelfCenter" }}
-          style={{ marginBlockStart: "var(--pf-t--global--spacer--md)" }}
-        >
-          <ComparisonTable data={data.comparisonTable} />
+
+        <FlexItem style={{ marginBlockStart: "var(--pf-t--global--spacer--md)" }}>
+          <OptionCard option={data.tsfSection} variant="preview" />
         </FlexItem>
       </Flex>
     </PageSection>

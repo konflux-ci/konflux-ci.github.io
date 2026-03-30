@@ -24,7 +24,7 @@
   const gaId = "__GA_MEASUREMENT_ID__";
   const amplitudeKey = "__AMPLITUDE_API_KEY__";
   const privacyUrl = "__PRIVACY_POLICY_URL__";
-  const debug = __DEBUG__;
+  const debug = __DEBUG__; // Boolean literal, not a string
 
   // Debug logging
   function log(msg, data) {

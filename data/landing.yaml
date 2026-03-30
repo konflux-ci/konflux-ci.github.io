@@ -8,7 +8,7 @@ hero:
   subtitle: "Konflux is a complete trusted software factory built from leading open source projects that makes building secure container images a breeze."
   tagline: "Your code deserves a factory, not a toolchain."
   primaryCTA:
-    label: "Try Locally"
+    label: "Try Konflux"
     href: "/try-konflux"
     icon: "CodeIcon"
   pipelineDiagram:
@@ -185,7 +185,7 @@ bottomCTA:
     href: "/getting-started"
   secondaryCTA:
     label: "Read the docs"
-    href: "/docs"
+    href: "https://konflux-ci.dev/docs/"
 
 editLink:
   label: "Edit this page on GitHub"
