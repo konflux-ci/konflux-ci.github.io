@@ -19,7 +19,7 @@ installationOptions:
       - "Full UI, Tekton pipelines & signing included"
     link:
       label: "Install with Kind"
-      href: "/docs/installation/kind"
+      href: "https://konflux-ci.dev/konflux-ci/docs/installation/"
       icon: "ArrowRightIcon"
 
   - icon: "TerminalIcon"
@@ -33,7 +33,7 @@ installationOptions:
       - "Integrates GitHub, pipelines & policies"
     link:
       label: "Install with tsf-cli"
-      href: "/docs/installation/tsf-cli"
+      href: "https://github.com/redhat-appstudio/tsf-cli/blob/main/docs/trusted-software-factory.md"
       icon: "ArrowRightIcon"
 
 comparisonTable:
