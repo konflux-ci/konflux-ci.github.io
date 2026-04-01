@@ -1,6 +1,7 @@
 // TypeScript interfaces for YAML content data files.
 // These types match the structure of files in /data/*.yaml.
 
+import type { ReactNode } from "react";
 import { LabelProps } from "@patternfly/react-core";
 
 // ─── Navigation (/data/navigation.yaml) ──────────────────────────
@@ -280,4 +281,21 @@ export interface TryKonfluxData {
   subtitle: string;
   installationOptions: InstallationOption[];
   tsfSection: TSFSection;
+}
+
+// ─── Comparison Table ─────────────────────────────────────────────
+
+export interface ComparisonTableColumn {
+  key: string;
+  label: string;
+}
+
+export interface ComparisonTableRow {
+  [key: string]: string | ReactNode;
+}
+
+export interface ComparisonTable {
+  heading: string;
+  columns: ComparisonTableColumn[];
+  rows: ComparisonTableRow[];
 }

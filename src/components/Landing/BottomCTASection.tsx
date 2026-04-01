@@ -85,7 +85,7 @@ export default function BottomCTASection({ data }: BottomCTASectionProps) {
             <Flex
               justifyContent={{ default: "justifyContentCenter" }}
               gap={{ default: "gapMd" }}
-              wrap={{ default: "wrap" }}
+              wrap="wrap"
             >
               <FlexItem>
                 <Button
