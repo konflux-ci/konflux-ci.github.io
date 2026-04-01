@@ -10,7 +10,7 @@ export default function TryKonflux(): ReactNode {
   return (
     <Layout
       title="Try Konflux"
-      description="Get Konflux running on your own cluster in minutes. Choose between local installation with Kind or full factory setup with tsf-cli."
+      description="Get Konflux running on your own cluster in minutes. Choose between local installation with Kind or Kubernetes deployment."
     >
       <TryKonfluxPage data={data} />
     </Layout>

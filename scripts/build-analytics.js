@@ -19,6 +19,27 @@ const privacyUrl =
   "https://www.redhat.com/en/about/privacy-policy";
 const debug = process.env.NODE_ENV !== "production";
 
+// Validate formats to prevent injection
+if (gaId && !/^G-[A-Z0-9]+$/.test(gaId)) {
+  console.warn(
+    `[Build Analytics] Warning: GA_MEASUREMENT_ID has unexpected format: ${gaId}`,
+  );
+}
+
+if (amplitudeKey && !/^[a-zA-Z0-9_-]+$/.test(amplitudeKey)) {
+  console.warn(
+    `[Build Analytics] Warning: AMPLITUDE_API_KEY has unexpected format`,
+  );
+}
+
+try {
+  new URL(privacyUrl);
+} catch (e) {
+  console.warn(
+    `[Build Analytics] Warning: PRIVACY_POLICY_URL is not a valid URL: ${privacyUrl}`,
+  );
+}
+
 console.log("[Build Analytics] Building analytics script...");
 console.log(`  GA_MEASUREMENT_ID: ${gaId ? "Set ✓" : "Not set"}`);
 console.log(`  AMPLITUDE_API_KEY: ${amplitudeKey ? "Set ✓" : "Not set"}`);
@@ -28,12 +49,27 @@ const templatePath = path.join(__dirname, "../src/analytics-template.js");
 const template = fs.readFileSync(templatePath, "utf8");
 
 // Replace placeholders with actual values (all occurrences)
-// String values need to be properly quoted
+// Use JSON.stringify to safely escape string values and prevent injection
 let output = template
-  .replace(/'__GA_MEASUREMENT_ID__'/g, `'${gaId}'`)
-  .replace(/'__AMPLITUDE_API_KEY__'/g, `'${amplitudeKey}'`)
-  .replace(/'__PRIVACY_POLICY_URL__'/g, `'${privacyUrl}'`)
-  .replace(/__DEBUG__/g, debug.toString());
+  .replace(/"__GA_MEASUREMENT_ID__"/g, JSON.stringify(gaId))
+  .replace(/"__AMPLITUDE_API_KEY__"/g, JSON.stringify(amplitudeKey))
+  .replace(/"__PRIVACY_POLICY_URL__"/g, JSON.stringify(privacyUrl))
+  .replace(/__DEBUG__/g, debug.toString()); // Boolean literal (no quotes)
+
+// Verify critical placeholders in code were replaced (not in comments)
+// Check for const declarations with unreplaced placeholders
+const codeLines = output.split("\n").filter((line) => !line.trim().startsWith("*"));
+const unreplacedInCode = codeLines
+  .join("\n")
+  .match(/const (gaId|amplitudeKey|privacyUrl|debug) = ["']?__[A-Z_]+__["']?/g);
+
+if (unreplacedInCode) {
+  console.error(
+    "[Build Analytics] ERROR: Failed to replace placeholders in code:",
+    unreplacedInCode,
+  );
+  process.exit(1);
+}
 
 // Minify if in production
 if (!debug) {

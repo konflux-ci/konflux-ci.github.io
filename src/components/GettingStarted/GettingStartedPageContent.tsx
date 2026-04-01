@@ -105,7 +105,6 @@ export default function GettingStartedPageContent({
               }}
             >
               <QuickLinksCard data={data.quickLinks} />
-              <TerminalBlock data={data.terminalBlock} />
             </div>
           </FlexItem>
         </Flex>

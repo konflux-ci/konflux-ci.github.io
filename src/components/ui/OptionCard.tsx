@@ -20,9 +20,13 @@ import "./OptionCard.css";
 
 interface OptionCardProps {
   option: InstallationOption;
+  variant?: "default" | "preview";
 }
 
-export default function OptionCard({ option }: OptionCardProps): ReactNode {
+export default function OptionCard({
+  option,
+  variant = "default",
+}: OptionCardProps): ReactNode {
   const cardRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 
@@ -39,11 +43,13 @@ export default function OptionCard({ option }: OptionCardProps): ReactNode {
     "--mouse-y": `${mousePosition.y}%`,
   } as CSSProperties;
 
+  const cardClassName = `option-card ${variant === "preview" ? "option-card--preview" : ""}`;
+
   return (
     <Card
       isFullHeight
       isPlain
-      className="option-card"
+      className={cardClassName}
       style={cardStyle}
       ref={cardRef}
       onMouseMove={handleMouseMove}
@@ -60,7 +66,7 @@ export default function OptionCard({ option }: OptionCardProps): ReactNode {
                 <DynamicIcon name={option.icon} className="option-card-icon" />
               </CardBody>
             </Card>
-            <Label color="green">{option.badge}</Label>
+            <Label color={option.badgeColor as any}>{option.badge}</Label>
           </Flex>
         </CardHeader>
         <CardTitle className="option-card-title">
@@ -82,6 +88,19 @@ export default function OptionCard({ option }: OptionCardProps): ReactNode {
               </ListItem>
             ))}
           </List>
+          {option.note && (
+            <Content
+              component="small"
+              style={{
+                fontStyle: "italic",
+                color: "var(--pf-t--global--text--color--subtle)",
+                marginTop: "var(--pf-t--global--spacer--md)",
+                display: "block",
+              }}
+            >
+              {option.note}
+            </Content>
+          )}
         </CardBody>
         <CardFooter>
           <DataDrivenButton link={option.link} className="option-card-cta" />

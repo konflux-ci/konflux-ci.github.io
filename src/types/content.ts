@@ -259,22 +259,19 @@ export interface InstallationOption {
   description: string;
   features: string[];
   link: DataLink;
+  note?: string;
+  variant?: "default" | "preview";
 }
 
-export interface ComparisonTableColumn {
-  label: string;
-  key: string;
-}
-
-export interface ComparisonTableRow {
-  feature: string;
-  [key: string]: string; // Dynamic columns (kind, tsfcli, etc.)
-}
-
-export interface ComparisonTable {
-  heading: string;
-  columns: ComparisonTableColumn[];
-  rows: ComparisonTableRow[];
+export interface TSFSection {
+  icon: string;
+  badge: string;
+  badgeColor: string;
+  title: string;
+  description: string;
+  features: string[];
+  note: string;
+  link: DataLink;
 }
 
 export interface TryKonfluxData {
@@ -282,5 +279,5 @@ export interface TryKonfluxData {
   heading: string;
   subtitle: string;
   installationOptions: InstallationOption[];
-  comparisonTable: ComparisonTable;
+  tsfSection: TSFSection;
 }

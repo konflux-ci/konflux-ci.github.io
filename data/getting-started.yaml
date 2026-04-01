@@ -105,11 +105,6 @@ pageSections:
         title: "Release"
         description: "Every time you want to release newly built artifacts, you create a Release CR in your tenant namespace. It represents your intent to release some content and, when present, will initiate the push of content. A Release CR references a specific Snapshot and ReleasePlan. ReleasePlans can also be configured for auto-release."
 
-alert:
-  type: "info"
-  title: "Auto-release"
-  content: "You can configure your ReleasePlan with auto-release enabled. When active, Konflux will generate releases automatically whenever your snapshots pass all their IntegrationTestScenarios."
-
 quickLinks:
   title: "Quick Links"
   icon: "BookOpenIcon"
