@@ -39,30 +39,18 @@ whyKonflux:
       image: "/img/features/cicd-automation.svg"
       title: "CI/CD Automation"
       description: "Build artifacts of all kinds from source. Automate builds, tests, and releases with repeatable, dependable outcomes."
-      link:
-        label: "Learn more"
-        href: "/docs/ci-cd-automation"
     - icon: "LockIcon"
       image: "/img/features/securely-sign.svg"
       title: "Securely Sign"
       description: "Generate secure & detailed provenance, an immutable record of what happened during each and every build step."
-      link:
-        label: "Learn more"
-        href: "/docs/signing"
     - icon: "ShieldAltIcon"
       image: "/img/features/supply-chain.svg"
       title: "Supply chain safeguards"
       description: "Verify container images against major secure software frameworks or your own custom rules."
-      link:
-        label: "Learn more"
-        href: "/docs/supply-chain"
     - icon: "UsersIcon"
       image: "/img/features/open-source.svg"
       title: "Open source, community driven"
       description: "Built in the open with transparent roadmaps, shared governance, and active contributors."
-      link:
-        label: "Learn more"
-        href: "/community"
 
 tourTheFactory:
   sectionLabel: "UNDER THE HOOD"

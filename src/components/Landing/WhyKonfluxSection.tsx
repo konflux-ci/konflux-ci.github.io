@@ -129,13 +129,15 @@ export default function WhyKonfluxSection({
                       {card.description}
                     </Content>
                   </CardBody>
-                  <CardFooter>
-                    <DataDrivenButton
-                      link={card.link}
-                      icon={<DynamicIcon name="ArrowRightIcon" />}
-                      style={{ textDecoration: "none" }}
-                    />
-                  </CardFooter>
+                  {card.link && (
+                    <CardFooter>
+                      <DataDrivenButton
+                        link={card.link}
+                        icon={<DynamicIcon name="ArrowRightIcon" />}
+                        style={{ textDecoration: "none" }}
+                      />
+                    </CardFooter>
+                  )}
                 </Card>
               </GalleryItem>
             ))}
