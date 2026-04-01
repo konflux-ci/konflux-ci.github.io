@@ -1,7 +1,7 @@
 import type { ReactNode, CSSProperties, ComponentType } from "react";
 import * as PFIcons from "@patternfly/react-icons";
 
-const iconRegistry = PFIcons as Record<
+const iconRegistry = PFIcons as unknown as Record<
   string,
   ComponentType<{ style?: CSSProperties; className?: string }> | undefined
 >;

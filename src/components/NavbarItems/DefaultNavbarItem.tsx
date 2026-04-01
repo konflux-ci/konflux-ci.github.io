@@ -10,7 +10,7 @@ import clsx from "clsx";
 // Import the type from Docusaurus
 import type { Props as DefaultNavbarItemProps } from "@theme/NavbarItem/DefaultNavbarItem";
 import { ExternalLinkSquareAltIcon } from "@patternfly/react-icons";
-import "./DefaultNavBarItem.css";
+import "./DefaultNavbarItem.css";
 
 export default function DefaultNavbarItem({
   activeBasePath,
