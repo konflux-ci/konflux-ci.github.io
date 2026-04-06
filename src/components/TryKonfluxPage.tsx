@@ -42,9 +42,6 @@ export default function TryKonfluxPage({
           ))}
         </Gallery>
 
-        <FlexItem style={{ marginBlockStart: "var(--pf-t--global--spacer--md)" }}>
-          <OptionCard option={data.tsfSection} variant="preview" />
-        </FlexItem>
       </Flex>
     </PageSection>
   );
