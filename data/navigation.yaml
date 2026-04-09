@@ -33,7 +33,7 @@ footer:
         - label: "Release Notes"
           href: "https://github.com/konflux-ci/konflux-ci/releases"
   bottomBar:
-    copyright: "© 2024 Konflux Community. Apache 2.0 License."
+    copyright: "© 2026 Konflux Community. Apache 2.0 License."
     links:
       - label: "GitHub"
         href: "https://github.com/konflux-ci"
