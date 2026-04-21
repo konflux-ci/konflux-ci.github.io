@@ -34,7 +34,7 @@ if (amplitudeKey && !/^[a-zA-Z0-9_-]+$/.test(amplitudeKey)) {
 
 try {
   new URL(privacyUrl);
-} catch (e) {
+} catch {
   console.warn(
     `[Build Analytics] Warning: PRIVACY_POLICY_URL is not a valid URL: ${privacyUrl}`,
   );
@@ -58,7 +58,9 @@ let output = template
 
 // Verify critical placeholders in code were replaced (not in comments)
 // Check for const declarations with unreplaced placeholders
-const codeLines = output.split("\n").filter((line) => !line.trim().startsWith("*"));
+const codeLines = output
+  .split("\n")
+  .filter((line) => !line.trim().startsWith("*"));
 const unreplacedInCode = codeLines
   .join("\n")
   .match(/const (gaId|amplitudeKey|privacyUrl|debug) = ["']?__[A-Z_]+__["']?/g);

@@ -1,8 +1,9 @@
-declare module 'vanilla-cookieconsent' {
+declare module "vanilla-cookieconsent" {
   export interface CookieConsentConfig {
     categories?: Record<string, { enabled?: boolean; readOnly?: boolean }>;
     language?: {
       default: string;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       translations: Record<string, any>;
     };
     guiOptions?: {
@@ -21,7 +22,9 @@ declare module 'vanilla-cookieconsent' {
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag?: (...args: any[]) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataLayer?: any[];
   }
 }

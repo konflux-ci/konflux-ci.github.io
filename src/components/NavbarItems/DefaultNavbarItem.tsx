@@ -19,12 +19,12 @@ export default function DefaultNavbarItem({
   href,
   label,
   html,
-  isDropdownLink = false,
+  isDropdownLink: _isDropdownLink = false,
   isDropdownItem = false,
   prependBaseUrlToHref,
   className,
   mobile = false,
-  position,
+  position: _position,
   ...props
 }: DefaultNavbarItemProps & { mobile?: boolean }): ReactNode {
   const toUrl = useBaseUrl(to);
@@ -56,7 +56,7 @@ export default function DefaultNavbarItem({
       }}
       icon={isExternalLink ? <ExternalLinkSquareAltIcon /> : undefined}
       iconPosition="end"
-      component={(componentProps: any) => {
+      component={(componentProps: React.ComponentProps<typeof Link>) => {
         const linkClasses = clsx(
           mobile
             ? "menu__link"
@@ -82,7 +82,7 @@ export default function DefaultNavbarItem({
             to={toUrl}
             isNavLink
             {...((activeBasePath || activeBaseRegex) && {
-              isActive: (_match: any, location: any) =>
+              isActive: (_match: unknown, location: { pathname: string }) =>
                 activeBaseRegex
                   ? isRegexpStringMatch(activeBaseRegex, location.pathname)
                   : location.pathname.startsWith(activeBaseUrl),

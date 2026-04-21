@@ -1,11 +1,5 @@
 import type { ReactNode } from "react";
-import {
-  Content,
-  Flex,
-  FlexItem,
-  PageSection,
-  Title,
-} from "@patternfly/react-core";
+import { Flex, FlexItem, PageSection, Title } from "@patternfly/react-core";
 import { useColorMode } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import SafeLink from "@site/src/components/ui/SafeLink";

@@ -8,11 +8,9 @@ import {
   Grid,
 } from "@patternfly/react-core";
 import type { GettingStartedData } from "@site/src/types/content";
-import { useSafeHref } from "@site/src/hooks/useSafeHref";
 import SectionHeader from "@site/src/components/ui/SectionHeader";
 import StepCard from "./StepCard";
 import QuickLinksCard from "./QuickLinksCard";
-import TerminalBlock from "./TerminalBlock";
 import BottomCTA from "./BottomCTA";
 import SafeLink from "../ui/SafeLink";
 
@@ -23,7 +21,6 @@ interface GettingStartedPageContentProps {
 export default function GettingStartedPageContent({
   data,
 }: GettingStartedPageContentProps) {
-  const { getSafeHref } = useSafeHref();
   return (
     <section
       style={{

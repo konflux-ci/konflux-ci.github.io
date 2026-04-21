@@ -66,7 +66,7 @@ export default function OptionCard({
                 <DynamicIcon name={option.icon} className="option-card-icon" />
               </CardBody>
             </Card>
-            <Label color={option.badgeColor as any}>{option.badge}</Label>
+            <Label color={option.badgeColor}>{option.badge}</Label>
           </Flex>
         </CardHeader>
         <CardTitle className="option-card-title">
