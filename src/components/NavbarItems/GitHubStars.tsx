@@ -7,13 +7,15 @@ const STARS_CACHE_KEY = "konflux-github-stars";
 const GITHUB_API_URL = "https://api.github.com/repos/konflux-ci/konflux-ci";
 
 function useGitHubStars(): string {
-  const [stars, setStars] = useState(() => {
-    if (typeof sessionStorage === "undefined") return "";
-    return sessionStorage.getItem(STARS_CACHE_KEY) ?? "";
-  });
+  const [stars, setStars] = useState("");
 
   useEffect(() => {
-    if (stars) return;
+    const cached = sessionStorage.getItem(STARS_CACHE_KEY);
+    if (cached) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setStars(cached);
+      return;
+    }
 
     fetch(GITHUB_API_URL)
       .then((res) => res.json())
@@ -27,7 +29,7 @@ function useGitHubStars(): string {
       .catch(() => {
         // Use fallback from YAML
       });
-  }, [stars]);
+  }, []);
 
   return stars;
 }
