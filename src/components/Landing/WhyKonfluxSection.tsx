@@ -15,6 +15,7 @@ import type { WhyKonfluxData } from "@site/src/types/content";
 import SectionHeader from "@site/src/components/ui/SectionHeader";
 import DataDrivenButton from "@site/src/components/ui/DataDrivenButton";
 import DynamicIcon from "@site/src/components/ui/DynamicIcon";
+import { logger } from "@site/src/utils/logger";
 
 // Import SVGs as React components
 import CicdAutomation from "@site/static/img/features/cicd-automation.svg";
@@ -41,7 +42,7 @@ function CardImage({ src, alt }: { src: string; alt: string }): ReactNode {
   const SvgComponent = SVG_COMPONENTS[src];
 
   if (!SvgComponent) {
-    console.warn(`No SVG component found for path: ${src}`);
+    logger.warn(`No SVG component found for path: ${src}`);
     return null;
   }
 

@@ -27,7 +27,7 @@ export default tseslint.config([
           caughtErrorsIgnorePattern: "^_",
         },
       ],
-      "no-console": ["error", { allow: ["warn", "error"] }],
+      "no-console": "error",
       "object-shorthand": ["error", "properties"],
       "prefer-template": "error",
     },
