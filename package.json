@@ -6,7 +6,7 @@
     "docusaurus": "docusaurus",
     "start": "yarn build:analytics && docusaurus start --host 0.0.0.0 --port 3000",
     "build": "yarn build:analytics && docusaurus build",
-    "build:analytics": "node scripts/build-analytics.js",
+    "build:analytics": "node scripts/build-analytics.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

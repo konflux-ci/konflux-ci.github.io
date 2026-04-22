@@ -39,9 +39,7 @@ export default tseslint.config([
       "react-hooks": reactHooksPlugin,
     },
     languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
+      globals: globals.browser,
     },
     settings: {
       react: {
@@ -57,31 +55,18 @@ export default tseslint.config([
     },
   },
   {
-    files: ["scripts/**/*.{js,mjs}"],
+    files: ["scripts/**/*.mjs"],
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
     },
     rules: {
       "no-console": "off",
     },
   },
   {
-    files: ["scripts/**/*.js"],
-    languageOptions: {
-      sourceType: "commonjs",
-    },
-    rules: {
-      "@typescript-eslint/no-require-imports": "off",
-    },
-  },
-  {
     files: ["docusaurus.config.ts", "sidebars.ts"],
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
     },
   },
 ]);

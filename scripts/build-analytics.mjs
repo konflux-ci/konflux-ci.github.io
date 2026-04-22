@@ -4,9 +4,12 @@
  * This runs as part of the Docusaurus build process.
  */
 
-const fs = require("fs");
-const path = require("path");
-const dotenv = require("dotenv");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load environment variables from .env file (if it exists)
 dotenv.config();
@@ -76,7 +79,7 @@ if (unreplacedInCode) {
 // Minify if in production
 if (!debug) {
   try {
-    const terser = require("terser");
+    const terser = await import("terser");
     const minified = terser.minify_sync(output, {
       compress: {
         dead_code: true,
