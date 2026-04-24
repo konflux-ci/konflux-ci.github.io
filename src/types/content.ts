@@ -255,7 +255,7 @@ export interface GettingStartedData {
 export interface InstallationOption {
   icon: string;
   badge: string;
-  badgeColor: string;
+  badgeColor: LabelProps["color"];
   title: string;
   description: string;
   features: string[];
@@ -267,7 +267,7 @@ export interface InstallationOption {
 export interface TSFSection {
   icon: string;
   badge: string;
-  badgeColor: string;
+  badgeColor: LabelProps["color"];
   title: string;
   description: string;
   features: string[];

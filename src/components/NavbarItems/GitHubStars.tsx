@@ -12,6 +12,7 @@ function useGitHubStars(): string {
   useEffect(() => {
     const cached = sessionStorage.getItem(STARS_CACHE_KEY);
     if (cached) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStars(cached);
       return;
     }

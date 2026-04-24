@@ -4,9 +4,12 @@
  * This runs as part of the Docusaurus build process.
  */
 
-const fs = require("fs");
-const path = require("path");
-const dotenv = require("dotenv");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load environment variables from .env file (if it exists)
 dotenv.config();
@@ -34,7 +37,7 @@ if (amplitudeKey && !/^[a-zA-Z0-9_-]+$/.test(amplitudeKey)) {
 
 try {
   new URL(privacyUrl);
-} catch (e) {
+} catch {
   console.warn(
     `[Build Analytics] Warning: PRIVACY_POLICY_URL is not a valid URL: ${privacyUrl}`,
   );
@@ -58,7 +61,9 @@ let output = template
 
 // Verify critical placeholders in code were replaced (not in comments)
 // Check for const declarations with unreplaced placeholders
-const codeLines = output.split("\n").filter((line) => !line.trim().startsWith("*"));
+const codeLines = output
+  .split("\n")
+  .filter((line) => !line.trim().startsWith("*"));
 const unreplacedInCode = codeLines
   .join("\n")
   .match(/const (gaId|amplitudeKey|privacyUrl|debug) = ["']?__[A-Z_]+__["']?/g);
@@ -74,7 +79,7 @@ if (unreplacedInCode) {
 // Minify if in production
 if (!debug) {
   try {
-    const terser = require("terser");
+    const terser = await import("terser");
     const minified = terser.minify_sync(output, {
       compress: {
         dead_code: true,
