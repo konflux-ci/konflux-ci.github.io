@@ -94,6 +94,8 @@ tourTheFactory:
       description: "Automated dependency update bot that keeps your build pipelines and component references current with the latest secure versions."
     - icon: "ShieldAltIcon"
       title: "Hermetic Builds"
+      link:
+        href: "https://hermetoproject.github.io/hermeto"
       description: "Network-isolated build environments that guarantee reproducibility and prevent supply chain attacks by eliminating external fetches at build time."
     - icon: "CloudUploadAltIcon"
       title: "Release Service"
