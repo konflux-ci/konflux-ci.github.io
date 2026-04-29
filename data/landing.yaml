@@ -70,7 +70,7 @@ tourTheFactory:
     - icon: "ClipboardCheckIcon"
       title: "Conforma (EC)"
       link:
-        href: "https://github.com/enterprise-contract"
+        href: "https://conforma.dev"
       description: "Enterprise Contract policy engine that validates container images against SLSA, supply chain, and custom organizational policies before release."
     - icon: "SearchIcon"
       title: "Clair"
