@@ -41,13 +41,13 @@ tsfSection:
   badge: "Dev Preview"
   badgeColor: "orangered"
   title: "Trusted Software Factory"
-  description: "Opinionated framework combining Konflux with additional Red Hat security and compliance tools. Automates GitHub and Quay integration with guided setup."
+  description: "Opinionated framework combining Konflux with additional Red Hat security and compliance tools. Automates GitHub, GitLab and Quay integration with guided setup."
   features:
     - "OpenShift 4.20+ with admin access required"
-    - "Automated GitHub and Quay integration"
+    - "Automated GitHub, GitLab and Quay integration"
     - "Red Hat opinionated security setup"
   note: "TSF is a separate project that uses Konflux. For standalone Konflux installations, use the guides above."
   link:
     label: "Explore TSF Documentation"
-    href: "https://github.com/redhat-appstudio/tsf-cli/blob/main/docs/trusted-software-factory.md"
+    href: "https://redhat-appstudio.github.io/tsf-cli/tsf/index.html"
     icon: "ExternalLinkAltIcon"
