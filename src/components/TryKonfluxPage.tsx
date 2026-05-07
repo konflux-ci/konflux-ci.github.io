@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { PageSection, Flex, Gallery } from "@patternfly/react-core";
+import { PageSection, Flex, FlexItem, Gallery } from "@patternfly/react-core";
 import type { TryKonfluxData } from "@site/src/types/content";
 import SectionHeader from "@site/src/components/ui/SectionHeader";
 import OptionCard from "@site/src/components/ui/OptionCard";
@@ -41,6 +41,10 @@ export default function TryKonfluxPage({
             <OptionCard key={option.title} option={option} />
           ))}
         </Gallery>
+
+        <FlexItem style={{ marginBlockStart: "var(--pf-t--global--spacer--md)" }}>
+          <OptionCard option={data.tsfSection} variant="preview" />
+        </FlexItem>
       </Flex>
     </PageSection>
   );
