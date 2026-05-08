@@ -57,7 +57,14 @@ function StepIndicator({
             flex={{ default: index < steps.length - 1 ? "flex_1" : "flexNone" }}
             style={{ flexShrink: 0 }}
           >
-            <FlexItem style={{ margin: 0 }}>
+            <FlexItem
+              style={{
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
               <Button
                 variant="plain"
                 onClick={() => onSelect(index)}
