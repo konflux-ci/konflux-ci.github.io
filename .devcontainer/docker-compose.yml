@@ -4,5 +4,7 @@ services:
     command: sleep infinity
     environment:
       BROWSER: "none"
+    ports:
+      - "3000:3000"
     volumes:
       - ..:/workspaces/konflux-ci.github.io:cached
