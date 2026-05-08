@@ -9,7 +9,7 @@ breadcrumbs:
     href: "/getting-started"
 
 heading: "Getting Started with Konflux"
-subtitle: "Adopting new platforms is always challenging. While Konflux aims to use industry-standard terminology and processes, there are some additional concepts to be aware of. This page introduces the key ideas and Kubernetes Custom Resources that underpin everything Konflux does."
+subtitle: "This page introduces the key concepts and Kubernetes Custom Resources that underpin Konflux. Familiarity with these ideas will help you navigate the platform and its APIs."
 
 pageSections:
   - heading: "Key Concepts"
@@ -17,7 +17,7 @@ pageSections:
       - number: 1
         icon: "LayerGroupIcon"
         title: "Namespace"
-        description: "In Kubernetes, namespaces provide a foundational mechanism for isolating groups of resources within a single cluster. Konflux scopes all the resources and APIs you interact with to namespaces — including your components, applications, snapshots, secrets, and the Tekton PipelineRuns that perform builds, tests, and releases."
+        description: "In Kubernetes, namespaces isolate groups of resources within a cluster. Konflux scopes all the resources and APIs you interact with to namespaces — including your components, applications, snapshots, secrets, and the Tekton PipelineRuns that perform builds, tests, and releases."
         link:
           label: "Kubernetes namespaces docs"
           href: "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
@@ -25,7 +25,7 @@ pageSections:
       - number: 2
         icon: "CubeIcon"
         title: "Tenant Namespace"
-        description: "Tenant namespaces are where Tekton Pipelines produce artifacts accessible by multiple team members according to their roles and permissions. In Konflux, you operate in a tenant namespace scoped to your team. One team can span multiple namespaces if needed, each with many applications and components."
+        description: "A tenant namespace is your team's workspace in Konflux — where you build artifacts, run tests, and manage releases. Team members access it according to their roles and permissions. One team can span multiple namespaces if needed, each with its own applications and components."
         items:
           - Create components and applications
           - Run the Tekton PipelineRuns defined in your Git repositories
@@ -35,12 +35,12 @@ pageSections:
       - number: 3
         icon: "ShieldAltIcon"
         title: "Managed Namespaces"
-        description: "Managed namespaces are where you manage release pipelines and credentials for your organization. The primary interaction between a tenant and managed namespaces involves creating a release in a tenant namespace that references a specific snapshot in the managed namespace, then triggering the release pipeline for that snapshot."
+        description: "Managed namespaces are where release pipelines and credentials for your organization are configured. To release, you create a Release CR in your tenant namespace that references a specific snapshot; the managed namespace then runs the release pipeline for that snapshot."
 
       - number: 4
         icon: "RocketIcon"
         title: "OCI Artifact"
-        description: "When you create a component in Konflux, the system pushes a build pipeline to the Git repository in the .tekton directory and installs a webhook. Upon a new push or pull request, the system runs the pipeline defined in the Git repository, describing the process necessary to build and test a specific artifact."
+        description: "An OCI artifact is any content stored in an OCI-compliant registry. Konflux builds produce OCI artifacts as their primary output — container images, File-Based Catalog bundles, Tekton bundles, and more. The SBOMs, signatures, and attestations generated during each build are also stored as OCI artifacts alongside the build output."
 
       - number: 5
         icon: "BezierCurveIcon"
@@ -73,22 +73,22 @@ pageSections:
       - number: 2
         icon: "LayerGroupIcon"
         title: "Application"
-        description: "An Application CR owns multiple components and logically groups them in the UI. When a new component's build pipeline completes, the Integration Service creates a new snapshot from each of the Component CRs, as well as the just-produced component artifact. IntegrationTestScenarios use this output to run."
+        description: "An Application CR owns multiple components and logically groups them in the UI. When a component's build pipeline completes, the Integration Service creates a new snapshot from each Component CR and the just-produced artifact. IntegrationTestScenarios then run against this snapshot."
 
       - number: 3
         icon: "FingerprintIcon"
         title: "Snapshot"
-        description: "An immutable set of component references, created from each push or pull request events. A snapshot defines a set of components which are either tested or released together. Note that at any point in time, a given snapshot might not necessarily represent the latest built artifacts for all components in your namespace."
+        description: "An immutable set of component references, created on each push or pull request event. A snapshot defines which components are tested or released together. A given snapshot does not necessarily represent the latest built artifacts for all components in your namespace."
 
       - number: 4
         icon: "ClipboardCheckIcon"
         title: "IntegrationTestScenario"
-        description: "A Tekton Pipeline that defines a test to run against an entire snapshot. The Integration Service runs all configured ITSs for the snapshot's application, including a default ITS for every new application to enable EnterpriseContractPolicy checks. Each ITS can be configured as optional for release."
+        description: "A Tekton Pipeline that defines a test to run against an entire snapshot. The Integration Service runs all configured IntegrationTestScenarios for the snapshot's application, including a default one for every new application that enables EnterpriseContractPolicy checks. Each IntegrationTestScenario can be configured as optional for release."
 
       - number: 5
         icon: "ShieldCheckIcon"
         title: "EnterpriseContractPolicy"
-        description: 'Konflux follows a "build once, release multiple times" mentality. You codify build requirements in an EnterpriseContractPolicy CR. When evaluated against a snapshot, it returns a single result based on the highest violation — if any single component fails, the overall result is a failure.'
+        description: 'Konflux follows a "build once, release multiple times" mentality. You codify build requirements in an EnterpriseContractPolicy CR. Conforma evaluates the policy against a snapshot and returns a single result based on the highest violation — if any component fails, the overall result is a failure.'
 
       - number: 6
         icon: "DiagramProjectIcon"
@@ -98,7 +98,7 @@ pageSections:
       - number: 7
         icon: "CheckCircleIcon"
         title: "ReleasePlanAdmission"
-        description: "Created in the managed namespace, this CR defines the specific pipeline to run and a given EnterpriseContractPolicy which must pass for each snapshot before that pipeline can proceed. It also establishes essential details about the delivery of your content."
+        description: "Created in the managed namespace, this CR defines the release pipeline to run and the EnterpriseContractPolicy that must pass for each snapshot before the pipeline can proceed. It also specifies where and how artifacts are delivered."
 
       - number: 8
         icon: "RocketIcon"

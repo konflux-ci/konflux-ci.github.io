@@ -5,7 +5,7 @@
 
 hero:
   headline: "Secure builds made easy"
-  subtitle: "Konflux is a complete trusted software factory built from leading open source projects that makes building secure container images a breeze."
+  subtitle: "Konflux is a trusted software factory, built from leading open source projects, that makes securing your container builds straightforward."
   tagline: "Your code deserves a factory, not a toolchain."
   primaryCTA:
     label: "Try Konflux"
@@ -33,20 +33,20 @@ hero:
 whyKonflux:
   sectionLabel: "WHY KONFLUX"
   heading: "The secure CI/CD platform that scales as fast as your code."
-  subtitle: "Are fragmented tools slowing you down? Are security gaps keeping you up at night? Konflux is here to help."
+  subtitle: "Are fragmented tools slowing you down? Are security gaps keeping you up at night? Konflux brings it all under one roof."
   cards:
     - icon: "BoltIcon"
       image: "/img/features/cicd-automation.svg"
       title: "CI/CD Automation"
-      description: "Build artifacts of all kinds from source. Automate builds, tests, and releases with repeatable, dependable outcomes."
+      description: "Build container images and other artifacts from source. Automate builds, tests, and releases with repeatable, dependable outcomes."
     - icon: "LockIcon"
       image: "/img/features/securely-sign.svg"
       title: "Securely Sign"
-      description: "Generate secure & detailed provenance, an immutable record of what happened during each and every build step."
+      description: "Generate secure, detailed provenance — an immutable record of what happened during every build step."
     - icon: "ShieldAltIcon"
       image: "/img/features/supply-chain.svg"
       title: "Supply chain safeguards"
-      description: "Verify container images against major secure software frameworks or your own custom rules."
+      description: "Verify container images against frameworks like SLSA and your own custom organizational policies."
     - icon: "UsersIcon"
       image: "/img/features/open-source.svg"
       title: "Open source, community driven"
@@ -55,18 +55,18 @@ whyKonflux:
 tourTheFactory:
   sectionLabel: "UNDER THE HOOD"
   heading: "Tour The Factory"
-  subtitle: "Konflux brings together best-in-class open source projects into a single, integrated software factory. Hover to explore each component."
+  subtitle: "Konflux integrates proven open source projects into a single software factory. Hover to explore each component."
   components:
     - icon: "CogIcon"
       title: "Tekton"
       link:
         href: "https://tekton.dev"
-      description: "Cloud-native CI/CD pipeline engine that powers all Konflux build and test workflows with flexible, Kubernetes-native task definitions."
+      description: "Kubernetes-native CI/CD pipeline engine that powers all Konflux build and test workflows with composable, reusable task definitions."
     - icon: "LockIcon"
       title: "Sigstore"
       link:
         href: "https://sigstore.dev"
-      description: "Keyless signing and transparency log for artifacts. Every build output is cryptographically signed and verifiable without managing private keys."
+      description: "Keyless signing and transparency log for artifacts. Konflux signs every build output cryptographically — no private key management required."
     - icon: "ClipboardCheckIcon"
       title: "Conforma (EC)"
       link:
@@ -76,17 +76,17 @@ tourTheFactory:
       title: "Clair"
       link:
         href: "https://github.com/quay/clair"
-      description: "Vulnerability scanner that analyzes container images for known CVEs, providing detailed reports and actionable remediation guidance."
+      description: "Vulnerability scanner that analyzes container images for known CVEs and produces severity reports with remediation guidance."
     - icon: "CubeIcon"
       title: "Buildah"
       link:
         href: "https://buildah.io"
-      description: "Daemonless, rootless container image builder. Builds OCI-compliant images from Dockerfiles or scratch without requiring a running daemon."
+      description: "Daemonless, rootless container image builder. Produces OCI-compliant images from Dockerfiles or scratch — no running daemon needed."
     - icon: "LayerGroupIcon"
       title: "SPDX / CycloneDX"
       link:
         href: "https://cyclonedx.org"
-      description: "Industry-standard SBOM formats automatically generated for every build, providing a complete inventory of all software components."
+      description: "Konflux generates SBOMs in these industry-standard formats for every build — a complete inventory of all software components in your artifact."
     - icon: "SyncAltIcon"
       title: "Renovate"
       link:
@@ -94,15 +94,15 @@ tourTheFactory:
       description: "Automated dependency update bot that keeps your build pipelines and component references current with the latest secure versions."
     - icon: "ShieldAltIcon"
       title: "Hermetic Builds"
-      description: "Network-isolated build environments that guarantee reproducibility and prevent supply chain attacks by eliminating external fetches at build time."
+      description: "Network-isolated build environments that strengthen reproducibility and prevent undeclared dependencies by blocking external fetches at build time."
     - icon: "CloudUploadAltIcon"
       title: "Release Service"
-      description: "Managed release pipelines that orchestrate promotion, gating, and deployment of verified artifacts across environments with full audit trails."
+      description: "Managed release pipelines that orchestrate promotion, gating, and deployment across environments, with a full audit trail for every released artifact."
     - icon: "CertificateIcon"
       title: "In-Toto Attestations"
       link:
         href: "https://in-toto.io"
-      description: "SLSA-compliant provenance attestations that cryptographically link every artifact to its source, builder, and build steps for end-to-end trust."
+      description: "SLSA-compliant provenance attestations that cryptographically link every artifact to its source, builder, and build steps."
 
 howItWorks:
   sectionLabel: "HOW IT WORKS"
@@ -113,9 +113,9 @@ howItWorks:
       title: "Bring your code"
       subtitle: "Any git source"
       detailTitle: "Bring your code from any git source"
-      description: "Connect your GitHub, GitLab, or any git repository to Konflux. Select from tailored trusted build pipelines for your artifact type and customize them to fit your needs — all driven by a simple build configuration."
+      description: "Connect your git repository to Konflux. Select from tailored trusted build pipelines for your artifact type and customize them to fit your needs — all driven by a simple build configuration."
       badges:
-        - "GitHub & GitLab integration"
+        - "GitHub, GitLab, & Forgejo integration"
         - "Tailored build pipelines per artifact type"
         - "Support for monorepos and multi-component apps"
     - icon: "ShieldAltIcon"
@@ -149,7 +149,7 @@ howItWorks:
       title: "Verify artifacts"
       subtitle: "Conforma policies"
       detailTitle: "Verify artifacts against enterprise policies"
-      description: "Before release, every artifact passes through Conforma's Enterprise Contract policy engine. Validate against SLSA levels, supply chain requirements, and your organization's custom rules — ensuring only compliant software moves forward."
+      description: "Before release, every artifact passes through Conforma's Enterprise Contract policy engine. It validates against SLSA levels, supply chain requirements, and your organization's custom rules — only compliant software reaches release."
       badges:
         - "Enterprise Contract policy engine"
         - "SLSA level verification"
@@ -158,7 +158,7 @@ howItWorks:
       title: "Code released"
       subtitle: "Deployed to prod"
       detailTitle: "Release verified code to production"
-      description: "The Release Service orchestrates promotion across environments with full gating and audit trails. Verified artifacts are deployed to production with complete traceability from source commit to running container."
+      description: "The Release Service orchestrates promotion across environments with full gating and audit trails. Every deployed artifact traces back to its source commit, build, and verification results."
       badges:
         - "Managed release pipelines"
         - "Multi-environment promotion"
@@ -167,7 +167,7 @@ howItWorks:
 bottomCTA:
   checkIcons: 3
   heading: "Bring your code, we'll secure the rest"
-  subtitle: "Connect any git repository and Konflux automatically creates secure pipelines that build, test, sign, and verify your software — producing tamper-proof SBOM and provenance records at every step."
+  subtitle: "Connect any git repository, select a build pipeline, and Konflux handles the rest — building, scanning, generating SBOMs, and signing provenance for every artifact."
   primaryCTA:
     label: "Get started"
     href: "/getting-started"

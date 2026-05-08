@@ -12,7 +12,7 @@ installationOptions:
     badge: "Quickstart"
     badgeColor: "green"
     title: "Local Development with Kind"
-    description: "Get Konflux running locally in minutes with our automated deployment script. Perfect for development, experimentation, and contributions. Uses Kind (Kubernetes-in-Docker) and deploys the Konflux operator automatically."
+    description: "Deploy Konflux locally with an automated script that sets up Kind (Kubernetes-in-Docker) and installs the Konflux operator. Ideal for development, experimentation, and contributions."
     features:
       - "Automated setup"
       - "Works on macOS and Linux"
@@ -26,7 +26,7 @@ installationOptions:
     badge: "All methods"
     badgeColor: "green"
     title: "Complete Guide"
-    description: "Comprehensive documentation covering all installation methods: Kubernetes deployments, building from source, installing from releases, and OLM-based installations. Choose the method that fits your cluster and use case."
+    description: "Comprehensive documentation covering all installation methods: Kubernetes deployments, source builds, release bundles, and OLM-based installations. Choose the method that fits your cluster and use case."
     features:
       - "Kubernetes cluster deployments"
       - "Building from source for development"
@@ -41,7 +41,7 @@ tsfSection:
   badge: "Dev Preview"
   badgeColor: "orangered"
   title: "Trusted Software Factory"
-  description: "Opinionated framework combining Konflux with additional Red Hat security and compliance tools. Automates GitHub, GitLab and Quay integration with guided setup."
+  description: "Opinionated framework combining Konflux with additional Red Hat security and compliance tools. Automates GitHub, GitLab, and Quay integration with guided setup."
   features:
     - "OpenShift 4.20+ with admin access required"
     - "Automated GitHub, GitLab and Quay integration"
