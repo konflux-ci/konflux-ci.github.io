@@ -16,6 +16,8 @@ footer:
           href: "/getting-started"
         - label: "Documentation"
           href: "https://konflux-ci.dev/docs"
+        - label: "Architecture"
+          href: "https://konflux-ci.dev/architecture"
     - heading: "COMMUNITY"
       links:
         - label: "Community Hub"
